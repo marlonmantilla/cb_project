@@ -1,4 +1,5 @@
 from django.db import models
+from profiles.models import Profile
 from django.utils.translation import ugettext_lazy as _
 
 class Categoria(models.Model):
@@ -16,12 +17,6 @@ class Tienda(models.Model):
     def __unicode__(self):
 		return self.nombre
 
-class Courier(models.Model):
-	nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
-	
-	def __unicode__(self):
-		return self.nombre
-
 class Producto(models.Model):
 	nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
 	cantidad = models.CharField(_("Cantidad"), blank=False, unique=True, max_length=255)
@@ -30,22 +25,22 @@ class Producto(models.Model):
 	def __unicode__(self):
 		return self.nombre
 
-class Envio(models.Model):
-	pais = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)	
-	ciudad = models.CharField(_("Ciudad"), blank=False, unique=True, max_length=255)	
-	tipo = models.CharField(_("Tipo"), blank=False, unique=True, max_length=255)	
-	guia = models.CharField(_("No. de guia"), blank=False, unique=True, max_length=255)	
-	productos = models.ManyToManyField(Producto, verbose_name="Products")
-	
-	def __unicode__(self):
-		return self.guia
-	
 class Oferta(models.Model):
 	titulo = models.CharField(_("Titulo"),max_length=255, blank=False)
 	descripcion = models.TextField(_('Descripcion'), blank=False )
 	precio = models.CharField( _("Precio"), blank=False, max_length=30 )
 	precio_anterior = models.CharField(_("Precio Anterior"), blank=False, max_length=30)
+	productos = models.ManyToManyField(Producto, verbose_name="Products")
 	tienda = models.ForeignKey(Tienda)
-	imagen = models.ImageField(upload_to='/mugshots')
+	imagen = models.ImageField(upload_to='media/mugshots/')
+	
 	def __unicode__(self):
 		return self.titulo
+
+class Favoritas(models.Model):
+	oferta = models.ForeignKey(Oferta)
+	usuario = models.ForeignKey(Profile)
+	
+	def __unicode__(self):
+		return self.oferta.titulo
+		

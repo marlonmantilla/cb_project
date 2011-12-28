@@ -19,9 +19,9 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     (r'^accounts/', include('userena.urls')),
     (r'^messages/', include('userena.contrib.umessages.urls')),
-    #url(r'^$',direct_to_template,{'template': 'static/promo.html'},name='promo'),
-    #url(r'^$',direct_to_template,{'template': 'dashboard/home.html'},name='promo'),
-    url(r'^$', 'Cittybox.views.home', name='home'),
+    
+
+	url(r'^$', 'Cittybox.views.home', name='home'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT }),
     (r'^i18n/', include('django.conf.urls.i18n')),
     

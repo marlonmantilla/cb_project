@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load widget_tweaks %}
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
@@ -58,22 +59,23 @@
                                 <div class="login_box">
                                     <h5>Ingresa a Cittybox</h5>
                                     <div class="login_box_content">
-                                        <form action="locker.html">
-                                            <p>
-                                                <label>Correo electrónico</label>
-                                                <input type="text" class="text" value="" />
-                                            </p>
-                                            <p>
-                                                <label>Contraseña</label>
-                                                <input type="password" class="text" value="" />
-                                            </p>
-                                            <p class="cleared">
-                                                <label for="terminos"><a href="">Olvide mi contraseña</a></label>
-                                            </p>
-                                            <p>
-                                                <input type="submit" class="btn set2" value="Ingresar" />
-                                            </p>
-                                        </form>
+										<form method="POST" action="/accounts/signin/">
+											<div style="display:none"><input type="hidden" value="097bea6c42a962ec7addbc8dd51d7943" name="csrfmiddlewaretoken"></div>
+
+											<p class="inlined wset1">
+												<label>Tu Nombre de usuario</label>
+												<input type="text" id="id_identification" class="required text" maxlength="75" name="identification">
+											</p>
+
+											<p class="inlined wset1">
+												<label>Tu contraseña</label>
+												<input type="password" name="password" class="required text" id="id_password">
+											</p>
+
+											<p>
+												<input type="submit" class="btn set2" value="Ingresar">
+											</p>
+										</form>
                                     </div>
                                 </div>
                             </div>
@@ -97,18 +99,7 @@
             </header>
 
         {% block nav %}
-        <!-- <ul id="nav">
-          <li><a href="{% url home %}"><span>{% trans 'Home' %}</span></a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url userena_profile_list %}"><span>{% trans 'All profiles' %}</span></a></li>
-          <li><a href="{% url userena_umessages_list %}"><span>{% trans 'Messages' %}</span></a></li>
-          <li><a href="{% url userena_profile_detail user.username %}"><span>{% trans 'Account' %} ({{ user.username }})</span></a></li>
-          <li><a href="{% url userena_signout %}"><span>{% trans 'Signout' %}</span></a></li>
-          {% else %}
-          <li><a href="{% url userena_signin %}"><span>{% trans 'Signin' %}</span></a></li>
-          <li><a href="{% url userena_signup %}"><span>{% trans 'Signup' %}</span></a></li>
-          {% endif %}
-        </ul> -->
+        
         {% endblock %}
         {% if not user.is_authenticated %}
         
