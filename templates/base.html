@@ -52,6 +52,7 @@
 
                 <nav class="top_nav">
                     <ul class="horz clearfix">
+                      {% if not user.is_authenticated %}
                         <li><a href="{% url userena_signup %}">Registrarme</a></li>
                         <li>
                             <div style="position: relative;">
@@ -64,6 +65,13 @@
                                 </div>
                             </div>
                         </li>
+                        {% else %}
+                        <li>
+                          <img width="20" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
+                          {{ user }}
+                        </li>
+                        <li><a href="{% url userena_signout %}">Salir</a></li>
+                        {% endif %}
                         <li><a href="">Contacto</a></li>
                         <li><a href="">Ayuda</a></li>
                     </ul>
@@ -85,9 +93,7 @@
         {% block nav %}
         
         {% endblock %}
-        {% if not user.is_authenticated %}
         
-        {% endif %}
 
       <div id="main" role="main">
         {% block content %}{% endblock %}

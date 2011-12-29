@@ -5,36 +5,452 @@
 {% block content_title %}<h2 class="content-title">{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
 {% block content %}
-
-
-    {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-    {% if user.username == profile.user.username %}
-    <ul id="profile-nav">
-        <li class="selected"><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %}</a></li>
-        <li><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %}</a></li>
-        <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
-        <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
-    </ul>
-    {% endif %}
-
-    <div id="details">
-        <img src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
-        {% if profile.user.get_full_name %}
-        <p><strong>{% trans "Name" %}</strong><br /> {{ profile.user.get_full_name }}</p>
-        {% endif %}
-        {% if profile.age != 0 %}
-        <p><strong>{% trans "Age" %}</strong><br /> {{ profile.age }}</p>
-        {% endif %}
-        {% if profile.website %}
-        <p><strong>{% trans "Website" %}</strong><br /> <a href="{{ profile.website }}">{{ profile.website }}</a></p>
-        {% endif %}
-        {% if profile.location %}
-        <p><strong>{% trans "Location" %}</strong><br />{{ profile.location }}</p>
-        {% endif %}
-        {% if profile.about_me %}
-        <p><strong>{% trans "About me" %}</strong><br />{{ profile.about_me }}</p>
-        {% endif %}
-    </div>
     
+    <div class="page_content clearfix">
+
+                    <div class="left">
+
+                        <div class="box box_sep">
+                            <div class="main_icon locker">
+                                <h1>Mi Locker</h1>
+                                <p>Aqui encontraras el resumen de tus compras, envios realizados y estado de tus paquetes</p>
+                            </div>
+
+                            <div class="fancy_table">
+                                <div class="table_header">
+                                    <form>
+                                        <label class="inlined">Filtrar por: </label>
+                                        <select class="tiny_select">
+                                            <option>Paquetes Recibidos</option>
+                                            <option>Paquetes Prealertados</option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <table>
+                                    <tbody><tr class="main_header box_gradient1">
+                                        <td>No. Pedido</td>
+                                        <td width="200">Producto</td>
+                                        <td>Categoria</td>
+                                        <td>Pais origen</td>
+                                        <td>Estado</td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="check_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">PlaystationKindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="warning_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="check_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="warning_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="check_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>
+                                            <div style="position: relative;">
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <div class="tooltip tooltip_1" style="display: none;">
+                                                    <span class="tarrow"></span>
+                                                    <div class="tooltip_cont">
+                                                        <img width="95" src="img/misc/kindle.jpg">
+                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
+                                                    </div><!-- END tooltip_cont -->
+                                                </div><!-- END tooltip -->
+                                            </div>
+                                        </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a class="warning_icn" href="#">Recibido</a></td>
+                                    </tr>
+                                </tbody></table>
+
+                            </div><!-- ENDS fancy_table -->
+
+                            <div class="pagination">
+                                <a class="active" href="#">1</a>
+                                <a href="#">2</a>
+                                <a href="#">3</a>
+                                <a href="#">4</a>
+                            </div>
+
+                        </div>
+
+                        <div class="box">
+                            <div>
+                                <h1>Ofertas favoritas</h1>
+                                <p>Aqui encontraras las ofertas que agregaste a favoritos, prealerta ofertas favoritas desde aquí:</p>
+                            </div>
+
+                            <div class="fancy_table">
+                                <div class="table_header">
+                                    <form>
+                                        <label class="inlined">Filtrar por: </label>
+                                        <select class="tiny_select">
+                                            <option>Paquetes Recibidos</option>
+                                            <option>Paquetes Prealertados</option>
+                                        </select>
+                                    </form>
+                                </div>
+                                <table>
+                                    <tbody><tr class="main_header box_gradient1">
+                                        <td>No. Pedido</td>
+                                        <td>Producto</td>
+                                        <td>Categoria</td>
+                                        <td>Pais origen</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>Kindle Fire, Full Color 7... </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a href="#">Prealertar</a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>Kindle Fire, Full Color 7... </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a href="#">Prealertar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>Kindle Fire, Full Color 7... </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a href="#">Prealertar</a></td>
+                                    </tr>
+                                    <tr class="odd">
+                                        <td><a href="">120-12014515</a></td>
+                                        <td>Kindle Fire, Full Color 7... </td>
+                                        <td>Tecnologia</td>
+                                        <td>Estados Unidos</td>
+                                        <td><a href="#">Prealertar</a></td>
+                                    </tr>
+                                </tbody></table>
+
+                            </div><!-- ENDS fancy_table -->
+
+                        </div>
+
+
+
+                    </div><!-- END left -->
+
+                    <div style="display: none;">
+                        <div class="overlay_box set1" id="prealert">
+                            <div class="main_icon locker">
+                                <h1>Prealertar Paquete</h1>
+                                <p>Llena el formulario y de esta forma podremos saber la información de tu compra y paquete</p>
+                            </div>
+
+                            <form>
+
+                                <p class="inlined wset1">
+                                    <label>País</label>
+                                    <select class="text">
+                                        <option selected="selected" value="2;#ESTADOS UNIDOS">ESTADOS UNIDOS</option>
+                                        <option value="3;#ESPAÑA">ESPAÑA</option>
+                                    </select>
+                                </p>
+                                <p class="inlined wset1">
+                                    <label>Tipo de envio</label>
+                                    <select class="text">
+                                        <option selected="selected" value="0">Seleccione..</option>
+                                        <option value="1">Documento</option>
+                                        <option value="2">Paquetes</option>
+                                        <option value="4">Computadores Portatil</option>
+                                        <option value="5">Computadores Escritorio</option>
+                                        <option value="23">Partes motores disel</option>
+                                        <option value="25">Lector radiofrecuencia tags</option>
+                                        <option value="26">Martillos y Mazos</option>
+                                        <option value="27">Reproductores de sonido</option>
+                                        <option value="28">Cintas Métricas</option>
+                                        <option value="29">Libros</option>
+                                        <option value="30">Partes Eq. Instrumentos Medicion</option>
+                                        <option value="31">Provitaminas y Vitaminas</option>
+                                        <option value="32">Partes acc. automatizacion datos</option>
+                                        <option value="33">Dispositivos eléctricos motores</option>
+                                        <option value="34">Celulares</option>
+                                        <option value="35">Máquinas aptos imprimir</option>
+                                        <option value="36">Part Maq Procesamiento</option>
+                                        <option value="37">Linternas de seguridad</option>
+                                        <option value="38">Termómetro digital</option>
+                                        <option value="39">Montura para lentes</option>
+                                        <option value="40">Ipod</option>
+                                        <option value="41">Radio, equipo de sonido, altoparlante</option>
+                                        <option value="42">Memoria USB</option>
+                                        <option value="43">Televisor</option>
+                                        <option value="44">Micrófono</option>
+                                        <option value="45">Instrumentos de medición</option>
+                                        <option value="46">Material eléctrico</option>
+                                        <option value="47">Termómetro de líquido</option>
+                                        <option value="48">Videojuegos</option>
+                                        <option value="49">Equipos tansmisión datos</option>
+                                        <option value="50">Herramientas neumáticas</option>
+                                        <option value="51">Cámara fotográfica digital</option>
+
+                                    </select>
+                                </p>
+
+
+                                <p class="inlined wset1">
+                                    <label>Ciudad de origen</label>
+                                    <input type="text" class="text" name="name">
+                                </p>
+                                <p class="inlined wset1">
+                                    <label>Proveedor</label>
+                                    <input type="text" class="text" name="name">
+                                </p>
+
+                                <p class="inlined wset1">
+                                    <label>Empresa transportadora</label>
+                                    <select class="text">
+                                        <option selected="selected" value="0">Seleccione..</option>
+                                        <option value="99999">Otro</option>
+                                        <option value="1">FEDEX</option>
+                                        <option value="2">UPS</option>
+                                        <option value="3">USPS</option>
+                                        <option value="4">DHL</option>
+                                    </select>
+                                </p>
+                                <p class="inlined wset1">
+                                    <label>No. de guia</label>
+                                    <input type="text" class="text" name="name">
+                                </p>
+
+                                <p class="cleared"></p>
+
+
+                                <a href="javascript://" class="add_link">Agregar producto</a>
+                                <table class="productos nomargin font11px">
+                                    <tbody><tr class="main_header box_gradient1">
+                                        <td>Producto</td>
+                                        <td>Cantidad</td>
+                                        <td>Valor unitario (Declarado)</td>
+                                        <td>Valor total</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="text" value="Portatil Dell Inspiron"></td>
+                                        <td><input type="text" class="text tiny" value="2"></td>
+                                        <td><input type="text" class="text tiny" value="$650"></td>
+                                        <td>$650</td>
+                                        <td><a class="delete_icn" href="javascript://">Eliminar</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="text" value="Portatil Dell Inspiron"></td>
+                                        <td><input type="text" class="text tiny" value="2"></td>
+                                        <td><input type="text" class="text tiny" value="$650"></td>
+                                        <td>$650</td>
+                                        <td><a class="delete_icn" href="javascript://">Eliminar</a></td>
+                                    </tr>
+
+                                </tbody></table>
+
+                                <p class="cleared">
+                                    <label>Observaciones</label>
+                                    <textarea class="text"></textarea>
+                                </p>
+                                <p>
+                                    <input type="submit" value="Prealertar" class="btn set2">
+                                </p>
+
+                            </form>
+
+                        </div>
+
+
+                        <div class="overlay_box set1" id="invite">
+                            <div class="main_icon personal">
+                                <h1>Invita a tus amigos a Cittybox</h1>
+                                <p>Entre más amigos invites más descuentos recibirás</p>
+                            </div>
+                            <form>
+                            <p class="cleared">
+                                <label>Correos: </label>
+                                <span class="tip">Digita los correos de tus amigos separados por coma. Ejemplo: carlos.moreno@hotmail.com, lucy.acosta@gmail.com,...</span>
+                                <textarea class="text"></textarea>
+                            </p>
+
+                            <p>
+                                <input type="submit" value="Invitar" class="btn set2">
+                            </p>
+
+                            </form>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                    <div class="right">
+
+                        <div class="sidebar_box">
+
+                            <h4>Mi cuenta</h4>
+                            <div class="sidebar_bxc nopaded">
+                                {% if user.username == profile.user.username %}
+                                <ul class="list_set1">
+                                    
+                                    
+                                     <li class="selected"><a href="{% url userena_profile_detail user.username %}">Mi Locker</a></li>
+                                        <li class="box_gradient1"><a href="#">Consultar estado paquete</a></li>
+                                        <li class="box_gradient1"><a class="prealert_btn cboxElement" href="javascript://">Prealertar paquetes</a></li>
+                                        <li><a href="{% url userena_profile_edit user.username %}">Configuracion de mi cuenta</a></li>
+                                         <li class="box_gradient1"><a class="invite_btn cboxElement" href="javascript://">Invitar amigos</a></li>
+                                   
+                                    
+                                </ul><!-- END list_set1 -->
+                               {% endif %}
+
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                        <div class="oferta_del_dia box_gradient1">
+                            <h5><span class="offer_arrow"></span>Oferta del día</h5>
+
+                            <div class="oferta_del_dia_cont">
+
+                                <div class="oferta_img">
+                                    <a href=""><img src="img/misc/kindle.jpg"></a>
+                                </div>
+
+                                <div class="oferta_info">
+                                    <a href="">Kindle Fire, Full Color 7... </a>
+                                    <span class="old_price">$299.00</span>
+                                    <span class="price">$199.00</span>
+                                </div>
+
+                            </div><!-- END oferta_del_dia_cont-->
+
+
+                        </div><!-- END oferta_del_dia -->
+
+
+                        <div class="sidebar_box">
+
+                            <h4>Calcula tu envio</h4>
+                            <div class="sidebar_bxc">
+                                <p style="color: rgb(102, 102, 102); font-size: 14px; text-align: center;">Quieres saber cuanto te cuesta?</p>
+                                <a style="margin: auto;" class="btn set1" href="">Calculadora</a>
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                        <div class="sidebar_box">
+
+                            <h4>Categorias Cittybox</h4>
+                            <div class="sidebar_bxc nopaded">
+                                <ul class="list_set1">
+                                    <li><a href="#">Computadores</a></li>
+                                    <li><a href="#">Hogar</a></li>
+                                    <li><a href="#">Electromesticos</a></li>
+                                    <li><a href="#">Juegos y Consolas</a></li>
+                                    <li><a href="#">Ropa y Accesorios</a></li>
+                                </ul><!-- END list_set1 -->
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                    </div><!-- END right -->
+
+                </div>
 
 {% endblock %}
