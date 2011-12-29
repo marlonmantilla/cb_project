@@ -1,6 +1,8 @@
 {% extends 'userena/base_userena.html' %}
-{% load widget_tweaks %}
 {% load i18n %}
+
+{% block title %}{% trans "Estas a un paso de ser parte de Cittybox!" %}{% endblock %}
+
 
 {% block content %}
 
@@ -8,76 +10,26 @@
 
 	<div class="left">
 
-		<div class="box box_sep">
-			<h1>Sé parte de Cittybox</h1>
-			<p>Conviertete en ciudadano de CittyBox y compra lo que siempre has querido:</p>
-			
-			<form id="signup_form" action="{% url userena_signup %}" method="POST">
-				{% csrf_token %}
-				{{ form.username.errors }}
-				{{ form.email.errors }}
-				{{ form.password1.errors }}
-				{{ form.password2.errors }}
-				<p class="inlined wset1">
-					<label>Tu Nombre de usuario</label>
-					{{ form.username|add_class:"text required" }}
-				</p>
-				<p class="inlined wset1">
-					<label>Tu Email</label>
-					{{ form.email|add_class:"text required email" }}
-				</p>
-				
-				<p class="inlined wset1">
-					<label>Tu Contraseña</label>
-					{{ form.password1|add_class:"text required" }}
-					
-				</p>
-				<p class="inlined wset1">
-					<label>Repite tu contraseña</label>
-					{{ form.password2|add_class:"text required" }}
-					
-				</p>
-
-				<p class="cleared">
-					<input type="checkbox" class="inlined required" id="terminos" name="terminos">
-					<label for="terminos">Acepto los <a href="">terminos y condiciones</a></label>
-				</p>
-				<p>
-					<input type="submit" value="Registrar" class="btn set2">
-				</p>
-			</form>
-
-		</div>
-
 		<div class="box">
-			<h1 class="video_icn">Qué es Cittybox?</h1>
+			
+            <h1>{% trans "Gracias por registrarte a Cittybox!" %}</h1>
+            <p>Estas a un paso de ser un ciudadano m&aacute;s:</p>
+	       
+			
+			<div class="info_box box_gradient1 font14px">
+				<h5 class="aviso_icn">Revisa tu correo</h5>
+                {% if userena_activation_required %}
+				<p>{% blocktrans %}Hemos enviado un correo electr&oacute;nico para que actives tu cuenta{% endblocktrans %}. {% blocktrans %}Te esperaremos un m&aacute;ximo de <b>{{ userena_activation_days }}</b> d&iacute;as para que actives tu cuenta. {% endblocktrans %}</p>
+				{% else  %}
+				<p>{% blocktrans %}You can now use the supplied credentials to signin.{% endblocktrans %}</p>
+				{% endif %}
 
-			<div class="video_layout">
-				<div class="vl_left">
-					<img src="img/misc/video.jpg">
-				</div>
-				<div class="vl_right">
-
-					<ul class="video_explain">
-						<li class="box_gradient1">
-							<span class="sec_num">1</span>
-							<span class="vid_text"><a href="">Busca el producto que quieres en las tiendas</a></span>
-						</li>
-						<li class="box_gradient1">
-							<span class="sec_num">2</span>
-							<span class="vid_text"><a href="">Coloca nuestra dirección en la información de la compra</a></span>
-						</li>
-						<li class="box_gradient1">
-							<span class="sec_num">3</span>
-							<span class="vid_text"><a href="">Notifica tu pedido y recibe tu producto en casa en menos de 5 días!</a></span>
-						</li>
-					</ul>
-
-				</div>
-			</div>
+            </div>
+			
 
 		</div>
 
+		
 		<div class="box_set1 box_gradient1 nopaded">
 			<h2 style="padding: 14px 10px; margin-bottom: 4px;">Ultimas Ofertas <a href="" style="float: right; font-size: 12px;">Ver todas las ofertas...</a></h2>
 

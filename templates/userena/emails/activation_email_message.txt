@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans with user.username as username %}Hola {{ username }},{% endblocktrans %}
+
+{% blocktrans with site.name as site %}Gracias por registrarte a {{ site }}.{% endblocktrans %}
+
+{% trans "Para activar tu cuenta entra en el siguiente link:" %}
+
+{{ protocol }}://{{ site.domain }}{% url userena_activate user.username activation_key %}
+
+{% trans "Estas a un paso de ser parte de Cittybox que esperas!" %}
+
+{% trans "Cordialmente" %},
+{{ site.name }}
+{% endautoescape %}

@@ -355,7 +355,22 @@ header nav.top_nav ul li:last-child{
         color-stop(0.53, rgb(255,255,255))
         );
 }
+label.error{
+    color: red;
+    font-size: 11px;
+    margin-top: 2px;
+}
 
+input.error{ border: 1px solid red !important; }
+.errorlist {
+    background: none repeat scroll 0 0 #FEF1EC;
+    border: 1px solid #CD0A0A;
+    color: #CD0A0A;
+    display: block;
+    margin: 0 0 20px;
+    padding: 10px;
+}
+.errorlist li{display: block;margin: 0;padding: 0;}
 .page_content{
     padding-top: 20px;
 }
@@ -386,6 +401,7 @@ header nav.top_nav ul li:last-child{
 .page_content{
     color: #666;
 }
+.font14px *,.font14px{font-size:14px !important;}
 form{
     overflow: hidden;
     position: relative;

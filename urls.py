@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     (r'^messages/', include('userena.contrib.umessages.urls')),
     
 
-	url(r'^$', 'Cittybox.views.home', name='home'),
+	url(r'^$', 'views.home', name='home'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT }),
     (r'^i18n/', include('django.conf.urls.i18n')),
     

@@ -99,7 +99,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-ROOT_URLCONF = 'Cittybox.urls'
+ROOT_URLCONF = 'cb_project.urls'
 
 TEMPLATE_DIRS = (
     abspath(PROJECT_ROOT, 'templates')
@@ -122,6 +122,7 @@ INSTALLED_APPS = (
 	'shippings',
     'debug_toolbar',
 	'widget_tweaks',
+    'django_extensions',
 )
 
 # Userena settings

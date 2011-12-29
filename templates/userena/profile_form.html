@@ -32,4 +32,14 @@
         </fieldset>
         <input type="submit" value="{% trans "Save changes" %}" />
     </form>
+
+    <div id="email_form"></div>
+    <div id="password_form"></div>
+
+    
+{% endblock %}
+
+{% block javascript_extra %}
+$("#email_form").load("{% url userena_email_change user.username %}");
+$("#password_form").load("{% url userena_password_change user.username %}");
 {% endblock %}

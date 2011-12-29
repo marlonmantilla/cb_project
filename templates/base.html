@@ -59,23 +59,7 @@
                                 <div class="login_box">
                                     <h5>Ingresa a Cittybox</h5>
                                     <div class="login_box_content">
-										<form method="POST" action="/accounts/signin/">
-											<div style="display:none"><input type="hidden" value="097bea6c42a962ec7addbc8dd51d7943" name="csrfmiddlewaretoken"></div>
-
-											<p class="inlined wset1">
-												<label>Tu Nombre de usuario</label>
-												<input type="text" id="id_identification" class="required text" maxlength="75" name="identification">
-											</p>
-
-											<p class="inlined wset1">
-												<label>Tu contraseña</label>
-												<input type="password" name="password" class="required text" id="id_password">
-											</p>
-
-											<p>
-												<input type="submit" class="btn set2" value="Ingresar">
-											</p>
-										</form>
+										
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +141,8 @@
         <script>window.jQuery || document.write('<script src="{{ MEDIA_URL }}js/libs/jquery-1.6.2.min.js"><\/script>')</script>
         <script src="{{ MEDIA_URL }}js/cycle.jquery.js" type="text/javascript"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jcarousel.min.js"></script>
+        <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.validate.min.js"></script>
+        
         <!--[if lt IE 7 ]>
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
   <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
@@ -164,11 +150,32 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
+
+                {% block javascript_extra %}
+        
+                {% endblock %}
+                
+                
                 $('.slideshow').cycle({
                     fx: 'scrollUp', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
                     timeout: 5000,
                     pager:  '#slider_pager'
                 });
+                $("#signup_form").validate({
+                  rules: {
+                    password2: {
+                      equalTo: "#id_password1"
+                    }
+                  }
+                });
+
+                    $.ajax("{% url userena_signin %}",{
+                       method: 'GET',
+                       success: function(data){
+                         $(".login_box").find('div').html(data);
+                       }
+                    });
+
                 $(".login_btn").click(function(){
                     $(".login_box").toggle();
                     return false;
