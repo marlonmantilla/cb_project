@@ -1,8 +1,11 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
+{% load shippings_extras %}
 
 {% block title %}{{ profile.user.username }}'s {% trans "profile" %}.{% endblock %}
 {% block content_title %}<h2 class="content-title">{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
+
+
 
 {% block content %}
     
@@ -26,6 +29,7 @@
                                         </select>
                                     </form>
                                 </div>
+
                                 <table>
                                     <tbody><tr class="main_header box_gradient1">
                                         <td>No. Pedido</td>
@@ -34,126 +38,9 @@
                                         <td>Pais origen</td>
                                         <td>Estado</td>
                                     </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="check_icn" href="#">Recibido</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">PlaystationKindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="warning_icn" href="#">Recibido</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="check_icn" href="#">Recibido</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="warning_icn" href="#">Recibido</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="check_icn" href="#">Recibido</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a class="warning_icn" href="#">Recibido</a></td>
-                                    </tr>
+                                    {% shippings_list user %}
+                                    
+                                    
                                 </tbody></table>
 
                             </div><!-- ENDS fancy_table -->
