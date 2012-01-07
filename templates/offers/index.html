@@ -65,9 +65,9 @@
 									</form>
 								</div>
 								<div class="th_r">
-									<form>
-										<input type="text" class="text" value="Buscar ofertas..." />
-									</form>
+									
+										<input id="search" type="text" class="text" value="" />
+									
 								</div>
 							</div>
 
@@ -112,6 +112,22 @@
 							return true;
 						}
 
+						function search(elem){
+							input = $(elem);
+							alert(input.val());
+							$('#offers_list').load('/search?q='+input.val(), function(data) {
+								$('#offers_list').html(data);
+							});
+							return true;
+						}
 
 					</script>
+{% endblock %}
+
+{% block javascript_extra %}
+$("#search").keypress(function(e){
+code= (e.keyCode ? e.keyCode : e.which);
+if (code == 13) search(this);
+
+}); 
 {% endblock %}

@@ -2,6 +2,8 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 from offers.models import Oferta, Categoria
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
+import operator
 
 OFFERS_PER_PAGE = 10
 
@@ -36,3 +38,26 @@ def offers_list(request):
 	except EmptyPage:
 		offers = paginator.page(paginator.num_pages)
 	return render_to_response('offers/offers_list.html', {'offers':offers}, context_instance=RequestContext(request))
+
+
+def search_keywords(keywords):
+    
+    if isinstance(keywords, str):
+        keywords = [keywords]
+
+    if not isinstance(keywords, list):
+        return None
+
+    list_body_qs = [Q(titulo__icontains=x) for x in keywords]
+    list_subj_qs = [Q(descripcion__icontains=x) for x in keywords]
+    final_q = reduce(operator.and_, list_body_qs + list_subj_qs)
+    r_qs = Oferta.objects.filter(final_q)
+    return r_qs
+
+def search(request):
+ 	offers_list = search_keywords(['kindle','fire'])
+ 	q = request.GET.get('q')
+ 	print q
+ 	paginator = Paginator(offers_list,OFFERS_PER_PAGE)
+ 	offers = paginator.page(1)
+ 	return render_to_response('offers/offers_list.html', {'offers':offers}, context_instance=RequestContext(request))
