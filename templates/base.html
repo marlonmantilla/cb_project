@@ -16,7 +16,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/style.css" />
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
-
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/colorbox/colorbox.css" />
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
   </head>
   <body>
@@ -83,7 +83,7 @@
                         <li><a href="como.html">C&oacute;mo Funciona</a></li>
                         <li><a href="cuanto.html">Cu&aacute;nto te cuesta?</a></li>
                         <li><a href="tiendas.html">Tiendas</a></li>
-                        <li><a href="ofertas.html">Ofertas</a></li>
+                        <li><a href="{% url offers %}">Ofertas</a></li>
                         <li><a href="impuestos.html">Impuestos</a></li>
                     </ul>
                 </nav>
@@ -148,7 +148,7 @@
         <script src="{{ MEDIA_URL }}js/cycle.jquery.js" type="text/javascript"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jcarousel.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.validate.min.js"></script>
-        
+        <script src="{{ MEDIA_URL }}js/colorbox/jquery.colorbox-min.js"></script>
         <!--[if lt IE 7 ]>
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
   <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>

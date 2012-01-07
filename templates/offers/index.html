@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load offers_extras %}
+
+{% block content %}
+	
+	<div class="page_content clearfix">
+
+					<div class="left">
+
+						<div class="box box_sep">
+							<div class="main_icon locker">
+								<h1>Ofertas en Cittybox</h1>
+								<p>Aqui encontraras las mejores ofertas en tus tiendas preferidas:</p>
+							</div>
+							
+							<div class="oferta_del_dia expanded">
+								<h5><span class="offer_arrow"></span>Oferta del día</h5>
+
+								<div class="oferta_del_dia_cont">
+
+									<div class="oferta_left">
+
+										<div class="slider_ofertas">
+											<img src="{{MEDIA_URL}}{{ main_offer.imagen }}" width="287" />
+											
+										</div>
+
+										<div id="slider_pager"></div>
+
+									</div>
+
+									<div class="oferta_right">
+										<h2><a target="_blank" href="{{ main_offer.url }}">{{ main_offer.titulo|truncatewords:5 }}</a></h2>
+										<span class="price">${{ main_offer.precio }}</span> 
+										{% if main_offer.precio_anterior %}
+											<span class="old_price">{{ main_offer.precio_anterior }}</span>
+										{% endif %}
+										<p>{{ main_offer.descripcion|truncatewords:40 }}</p>
+										<p><a target="_blank" href="{{ main_offer.url }}" class="btn set2">Comprar</a></p>
+									</div>
+
+								</div><!-- END oferta_del_dia_cont-->
+
+
+							</div>
+
+
+
+						</div>
+
+
+						<div class="box">
+
+							<div class="table_header clearfix">
+								<div class="th_l">
+									<form>
+										<label class="inlined">Filtrar por: </label>
+										<select class="tiny_select">
+										{% for categoria in categorias %}
+											<option value="{{categoria.id}}">{{ categoria.nombre }}</option>
+										{% endfor %}	
+										</select>
+									</form>
+								</div>
+								<div class="th_r">
+									<form>
+										<input type="text" class="text" value="Buscar ofertas..." />
+									</form>
+								</div>
+							</div>
+
+							<div class="pagination">
+								<a class="active" href="#">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+							</div>
+
+							{% offers_list %}
+							
+							<div class="pagination">
+								<a class="active" href="#">1</a>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+							</div>
+
+						</div>
+
+
+
+					</div><!-- END left -->
+
+
+{% endblock %}

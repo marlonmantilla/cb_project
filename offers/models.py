@@ -11,16 +11,16 @@ class Categoria(models.Model):
 
 class Tienda(models.Model):
     nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
-    url = models.URLField(_('Url'), blank=True, verify_exists=True)
+    url = models.URLField(_('Url'), blank=True)
     categoria = models.ForeignKey(Categoria)
 
     def __unicode__(self):
 		return self.nombre
 
 class Producto(models.Model):
-	nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
-	cantidad = models.CharField(_("Cantidad"), blank=False, unique=True, max_length=255)
-	valor = models.CharField(_("Valor"), blank=False, unique=True, max_length=255)
+	nombre = models.CharField(_("Nombre"), blank=False, max_length=255)
+	cantidad = models.IntegerField(_("Cantidad"),default=1, blank=True)
+	valor = models.CharField(_("Valor"), blank=False, max_length=255)
 	
 	def __unicode__(self):
 		return self.nombre
@@ -29,11 +29,14 @@ class Oferta(models.Model):
 	titulo = models.CharField(_("Titulo"),max_length=255, blank=False)
 	descripcion = models.TextField(_('Descripcion'), blank=False )
 	precio = models.CharField( _("Precio"), blank=False, max_length=30 )
-	precio_anterior = models.CharField(_("Precio Anterior"), blank=False, max_length=30)
-	productos = models.ManyToManyField(Producto, verbose_name="Products")
-	tienda = models.ForeignKey(Tienda)
+	precio_anterior = models.CharField(_("Precio Anterior"), blank=True, max_length=30)
+	productos = models.ManyToManyField(Producto, blank=True, verbose_name="Products")
+	tienda = models.ForeignKey(Tienda, blank=True)
 	imagen = models.ImageField(upload_to='media/mugshots/')
-	
+	oferta_del_dia = models.BooleanField(blank=True,default=False)
+	url = models.URLField(blank=True) 
+	categoria = models.ForeignKey(Categoria, blank=True, null=True)
+		
 	def __unicode__(self):
 		return self.titulo
 

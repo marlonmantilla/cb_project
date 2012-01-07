@@ -900,7 +900,7 @@ form .info_box{
     margin-right: 15px;
     padding: 14px;
     text-align: center;
-    width: 184px;
+    width: 182px;
 }
 .offers_list li .top_links{
     margin-bottom: 5px;
@@ -916,7 +916,9 @@ form .info_box{
 }
 .offers_list .offer_info a{
     display: block;
+    height: 32px;
     margin-bottom: 8px;
+    overflow: hidden;
     padding: 0 10px;
 }
 .offers_list img{

@@ -14,12 +14,12 @@ class Envio(models.Model):
 	ciudad = models.CharField(_("Ciudad"), blank=True, max_length=255)
 	proveedor = models.CharField(_("Proveedor"), blank=True, max_length=255)
 	tipo = models.CharField(_("Tipo"), blank=True, max_length=255)	
-	guia = models.CharField(_("No. de guia"), blank=True, unique=True, max_length=255)	
-	transportadora = models.ForeignKey(Transportadora, unique=True)
+	guia = models.CharField(_("No. de guia"), blank=False, unique=True, max_length=255)	
+	transportadora = models.ForeignKey(Transportadora)
 	productos = models.ManyToManyField(Producto, verbose_name="Productos")
 	observaciones = models.TextField(_("Observaciones"))
-	estado = models.IntegerField()
-	usuario = models.ForeignKey(Profile, blank=False)
+	estado = models.IntegerField(default=0)
+	usuario = models.ForeignKey(Profile, blank=True)
 	
 	def __unicode__(self):
 		return self.guia
