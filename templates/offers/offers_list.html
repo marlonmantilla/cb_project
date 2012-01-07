@@ -1,5 +1,22 @@
+{% if offers.object_list %}
+<div class="pagination" style="width:100%">
+    <span class="step-links">
+        {% if offers.has_previous %}
+        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><<</a>
+        {% endif %}
+
+        <span class="current">
+            Pagina {{ offers.number }} de {{ offers.paginator.num_pages }}.
+        </span>
+
+        {% if offers.has_next %}
+            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">>></a>
+        {% endif %}
+    </span>
+</div>
+
 <ul class="offers_list horz clearfix">
-	{% for offer in offers %}
+	{% for offer in offers.object_list %}
 	<li class="box_gradient1 main">
 		<div class="top_links clearfix">
 			<ul class="horz tl_l"><li><a class="add_to_favorites" href="#">Agregar a favoritos</a></li></ul>
@@ -19,3 +36,21 @@
 	</li>					
 	{% endfor %}
 </ul>
+<div class="pagination" style="width:100%">
+    <span class="step-links">
+        {% if offers.has_previous %}
+        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><<</a>
+        {% endif %}
+
+        <span class="current">
+            Pagina {{ offers.number }} de {{ offers.paginator.num_pages }}.
+        </span>
+
+        {% if offers.has_next %}
+            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">>></a>
+        {% endif %}
+    </span>
+</div>
+{% else %}
+No hay resultados...
+{% endif %}

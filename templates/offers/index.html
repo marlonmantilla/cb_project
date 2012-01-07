@@ -55,10 +55,12 @@
 								<div class="th_l">
 									<form>
 										<label class="inlined">Filtrar por: </label>
-										<select class="tiny_select">
+										<select class="tiny_select" id="categorias_select" onchange="filtrar_categoria(this);">
+										<option value="n">Seleccione una categoria</option>
 										{% for categoria in categorias %}
 											<option value="{{categoria.id}}">{{ categoria.nombre }}</option>
 										{% endfor %}	
+										<option value="todas">Todas las ofertas</option>
 										</select>
 									</form>
 								</div>
@@ -69,21 +71,10 @@
 								</div>
 							</div>
 
-							<div class="pagination">
-								<a class="active" href="#">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-							</div>
-
-							{% offers_list %}
+							<div id="offers_list">
+								{% offers_list %}
+							</div
 							
-							<div class="pagination">
-								<a class="active" href="#">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-							</div>
 
 						</div>
 
@@ -91,5 +82,36 @@
 
 					</div><!-- END left -->
 
+					<script type="text/javascript">
+						
+						function filtrar_categoria(elem){
+							id = $(elem).val();
+							if( id == "todas" ){
+								document.location = "{% url offers %}"
+							}
+							if( id != "n" ){
+								$('#offers_list').load('/filtrar_categoria/'+id+"?page=1", function() {
+								  $(this).prepend("<h3>Ofertas en categoria '"+$(elem).find("option:selected").text()+"'</h3>");
+								});
+							}
+						}
 
+						function paginate(elem, by_cat){
+							page = $(elem).attr("rel");
+							if( by_cat ){
+								id = $("#categorias_select").val();
+								$('#offers_list').load('/filtrar_categoria/'+id+page, function() {
+									console.log($("#categorias_select"));
+								  $('#offers_list').prepend("<h3>Ofertas en categoria '"+$("#categorias_select").find("option:selected").text()+"'</h3>");
+								});
+							}else{
+								$('#offers_list').load('/offers_list'+page, function() {
+									  
+								});
+							}
+							return true;
+						}
+
+
+					</script>
 {% endblock %}

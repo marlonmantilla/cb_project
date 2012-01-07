@@ -13,8 +13,8 @@ urlpatterns = patterns('',
     (r'^messages/', include('userena.contrib.umessages.urls')),
     
     url(r'^offers/$', 'offers.views.index', name='offers'),
-    url(r'^filtrar_categoria/$', 'offers.views.filtrar_categoria', name='filtrar_categoria'),
-    
+    url(r'^filtrar_categoria/(?P<categoria_id>[\d]+)/$', 'offers.views.filtrar_categoria', name='filtrar_categoria'),
+    url(r'^offers_list/$', 'offers.views.offers_list', name='offers_list'),
 
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
 	url(r'^$', 'views.home', name='home'),
