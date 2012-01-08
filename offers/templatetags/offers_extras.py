@@ -1,6 +1,6 @@
 from django import template
 from django.shortcuts import get_object_or_404
-from offers.models import Oferta
+from offers.models import Oferta, Categoria
 from settings import MEDIA_URL
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from offers.views import OFFERS_PER_PAGE
@@ -17,3 +17,8 @@ def offers_list(context):
 def oferta_del_dia(context):
 	oferta = Oferta.objects.filter(oferta_del_dia=True)[0]
 	return { 'oferta':oferta,'MEDIA_URL': MEDIA_URL }
+
+@register.inclusion_tag('offers/categories.html',takes_context=True)
+def categories_list(context):
+	categories = Categoria.objects.all()
+	return { 'categories':categories }

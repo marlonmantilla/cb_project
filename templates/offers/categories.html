@@ -1,0 +1,12 @@
+<div class="sidebar_box">
+
+    <h4>Categorias Cittybox</h4>
+    <div class="sidebar_bxc nopaded">
+        <ul class="list_set1">
+        {% for category in categories %}
+            <li><a href="/ofertas?category={{ category.id }}">{{ category.nombre }}</a></li>
+        {% endfor %}
+        </ul><!-- END list_set1 -->
+    </div>
+
+</div><!-- END sidebar_box -->

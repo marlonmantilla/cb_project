@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     (r'^accounts/', include('userena.urls')),
     (r'^messages/', include('userena.contrib.umessages.urls')),
     
-    url(r'^offers/$', 'offers.views.index', name='offers'),
+    url(r'^ofertas/$', 'offers.views.index', name='offers'),
     url(r'^filtrar_categoria/(?P<categoria_id>[\d]+)/$', 'offers.views.filtrar_categoria', name='filtrar_categoria'),
     url(r'^offers_list/$', 'offers.views.offers_list', name='offers_list'),
     url(r'^search/$', 'offers.views.search', name='search'),
