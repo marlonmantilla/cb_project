@@ -1,0 +1,35 @@
+{% load offers_extras %}
+<div class="box_set1 box_gradient1 nopaded">
+                            <h2 style="padding: 14px 10px; margin-bottom: 4px;">Ultimas Ofertas <a style="float: right; font-size: 12px;" href="{% url offers %}">Ver todas las ofertas...</a></h2>
+
+                            <div class="ofertas_slider clearfix">
+
+                                <div class="ofertas_left">
+
+                                    {% oferta_del_dia %}
+
+
+                                </div><!-- END -->
+
+                                <div class="ofertas_right">
+
+                                    <div class="offer_carrousel_container clearfix">
+
+
+                                        <ul class="offer_list clearfix">
+                                        {% for offer in offers %}
+                                            <li>
+                                                <img height="95" width="100" src="{{ MEDIA_URL }}{{ offer.imagen }}" alt="{{ offer.titulo|truncatewords:5 }}" />
+                                                <a href="{{ offer.url }}">{{ offer.titulo|truncatewords:3 }}</a>
+                                                <span class="price">${{ offer.precio }}</span>
+                                            </li>
+                                          {% endfor %}  
+                                        </ul><!-- END offer_list -->
+
+                                    </div><!-- END offer_carrousel_container -->
+
+                                </div>
+
+                            </div><!-- END ofertas_slider -->
+
+                        </div>

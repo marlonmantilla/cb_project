@@ -1,11 +1,11 @@
 {% load offers_extras %}
 <div class="right">
-
+                        {% if user.is_authenticated %}
                         <div class="sidebar_box">
 
                             <h4>Mi cuenta</h4>
                             <div class="sidebar_bxc nopaded">
-                                {% if user.is_authenticated %}
+                                
                                 <ul class="list_set1">
                                     
                                     
@@ -17,12 +17,26 @@
                                    
                                     
                                 </ul><!-- END list_set1 -->
-                               {% endif %}
+                               
 
                             </div>
 
                         </div><!-- END sidebar_box -->
+                        {% else %}
+                        <div class="sidebar_box">
 
+                            <h4>Encuentranos en Facebook...</h4>
+                            <div class="sidebar_bxc nopaded">
+                                
+                               <iframe 
+src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fcittybox&amp;width=266&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=false&amp;header=false&amp;appId=245556368795095" 
+scrolling="no" frameborder="0" style="border:none; overflow:hidden; 
+width:266px; height:258px;" allowTransparency="true"></iframe>
+
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+                        {% endif %}
                         
                         {% oferta_del_dia %}
 
