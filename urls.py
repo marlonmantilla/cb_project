@@ -16,7 +16,8 @@ urlpatterns = patterns('',
     url(r'^filtrar_categoria/(?P<categoria_id>[\d]+)/$', 'offers.views.filtrar_categoria', name='filtrar_categoria'),
     url(r'^offers_list/$', 'offers.views.offers_list', name='offers_list'),
     url(r'^search/$', 'offers.views.search', name='search'),
-
+    url(r'^add_to_favorites/(?P<offer_id>[\d]+)/$', 'offers.views.add_to_favorites', name='add_to_favorites'),
+    
 
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
 	url(r'^$', 'views.home', name='home'),

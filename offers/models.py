@@ -1,6 +1,7 @@
 from django.db import models
 from profiles.models import Profile
 from django.utils.translation import ugettext_lazy as _
+from django.core.exceptions import ObjectDoesNotExist
 
 class Categoria(models.Model):
     nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
@@ -13,7 +14,7 @@ class Tienda(models.Model):
     nombre = models.CharField(_("Nombre"), blank=False, unique=True, max_length=255)
     url = models.URLField(_('Url'), blank=True)
     categoria = models.ForeignKey(Categoria)
-
+    imagen = models.ImageField(upload_to='media/stores/', blank=True, null=True)
     def __unicode__(self):
 		return self.nombre
 
@@ -40,6 +41,14 @@ class Oferta(models.Model):
 		 
 	def __unicode__(self):
 		return self.titulo
+	
+	def is_favorite(self, user):
+		try:
+		    Favoritas.objects.get(oferta=self, usuario = user)
+		    return True
+		except ObjectDoesNotExist:
+			return False
+		
 
 class Favoritas(models.Model):
 	oferta = models.ForeignKey(Oferta)

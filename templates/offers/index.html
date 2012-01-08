@@ -66,7 +66,7 @@
 								</div>
 								<div class="th_r">
 									
-										<input id="search" type="text" class="text" value="" />
+										<input id="search" type="text" class="text" onblur="$(this).val('Buscar ofertas...');$(this).width('150')" onfocus="change_size(this);" value="Buscar ofertas..." />
 									
 								</div>
 							</div>
@@ -114,11 +114,38 @@
 
 						function search(elem){
 							input = $(elem);
-							alert(input.val());
-							$('#offers_list').load('/search?q='+input.val(), function(data) {
+							
+							var words = input.val().split(' ');
+						    var newwords = new Array();
+						    for(i=0, x=words.length; i<x; i++){
+						     newwords.push(words[i]+'+');
+						    }
+						    query_string = newwords.join('');
+
+							$('#offers_list').load('/search?q='+query_string, function(data) {
 								$('#offers_list').html(data);
 							});
 							return true;
+						}
+
+						function change_size(elem){
+							$(elem).val('');
+							$(elem).animate({
+						    	width: 233,
+						    }, 300, function() {});
+						}
+
+						function favorites(elem){
+							$(elem).toggleClass("active");
+							offer_id = $(elem).attr('rel');
+							$.ajax({
+								url: "/add_to_favorites/"+offer_id,
+								method: "GET",
+								success: function(data){
+									if(data=="OK")
+										console.log("Agregado a favoritos");
+								}
+							})
 						}
 
 					</script>

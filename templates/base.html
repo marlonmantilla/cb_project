@@ -6,7 +6,7 @@
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   <head>
-    <title>{% block title %}Django Userena - Accounts for your Django application{% endblock %}</title>
+    <title>{% block title %}Cittybox - Haz tus compras y recibelas en casa{% endblock %}</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -48,7 +48,7 @@
     </div> -->
     
         <header>
-                <div class="logo"><a href="index.html">Cittybox</a></div>
+                <div class="logo"><a href="{% url home %}">Cittybox</a></div>
 
                 <nav class="top_nav">
                     <ul class="horz clearfix">
@@ -67,8 +67,8 @@
                         </li>
                         {% else %}
                         <li>
-                          <img width="20" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
-                          {{ user }}
+                          <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
+                          <a href="{% url userena_profile_detail user %}">{{ user }}</a>
                         </li>
                         <li><a href="{% url userena_signout %}">Salir</a></li>
                         {% endif %}
@@ -79,12 +79,12 @@
 
                 <nav class="main_nav">
                     <ul class="horz clearfix">
-                        <li><a href="index.html"><span class="home_icn">Inicio</span></a></li>
-                        <li><a href="como.html">C&oacute;mo Funciona</a></li>
-                        <li><a href="cuanto.html">Cu&aacute;nto te cuesta?</a></li>
-                        <li><a href="tiendas.html">Tiendas</a></li>
+                        <li><a href="{% url home %}"><span class="home_icn">Inicio</span></a></li>
+                        <li><a href="{% url home %}">C&oacute;mo Funciona</a></li>
+                        <li><a href="{% url home %}">Cu&aacute;nto te cuesta?</a></li>
+                        <li><a href="{% url home %}">Tiendas</a></li>
                         <li><a href="{% url offers %}">Ofertas</a></li>
-                        <li><a href="impuestos.html">Impuestos</a></li>
+                        <li><a href="{% url home %}">Impuestos</a></li>
                     </ul>
                 </nav>
 

@@ -1274,6 +1274,10 @@ footer .footer_links li.main_title{
     height: 20px;
     text-indent: -3099px;
     display: block;
+    outline:none;
+}
+.add_to_favorites:hover,.add_to_favorites.active{
+    background-position: 0 -20px
 }
 .facebook_share,.twitter_share{
     background: url(../img/icn/shareicns.png) no-repeat;

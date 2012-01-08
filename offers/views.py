@@ -1,8 +1,9 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
-from offers.models import Oferta, Categoria
+from offers.models import Oferta, Categoria, Favoritas
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.http import HttpResponse
 import operator
 
 OFFERS_PER_PAGE = 10
@@ -50,14 +51,21 @@ def search_keywords(keywords):
 
     list_body_qs = [Q(titulo__icontains=x) for x in keywords]
     list_subj_qs = [Q(descripcion__icontains=x) for x in keywords]
-    final_q = reduce(operator.and_, list_body_qs + list_subj_qs)
+    final_q = reduce(operator.and_, list_body_qs + list_subj_qs )
     r_qs = Oferta.objects.filter(final_q)
     return r_qs
 
 def search(request):
- 	offers_list = search_keywords(['kindle','fire'])
- 	q = request.GET.get('q')
- 	print q
+ 	q = request.GET.get('q').split('+')
+ 	offers_list = search_keywords(q)
  	paginator = Paginator(offers_list,OFFERS_PER_PAGE)
  	offers = paginator.page(1)
  	return render_to_response('offers/offers_list.html', {'offers':offers}, context_instance=RequestContext(request))
+
+def add_to_favorites(request, offer_id):
+	oferta = Oferta.objects.get(id=offer_id)
+	favorita = Favoritas(oferta=oferta,usuario=request.user.get_profile() )
+	print oferta
+	print favorita
+	print favorita.save()
+	return HttpResponse("OK")
