@@ -26,6 +26,16 @@ class Profile(UserenaLanguageBaseProfile):
     location =  models.CharField(_('location'), max_length=255, blank=True)
     birth_date = models.DateField(_('birth date'), blank=True, null=True)
     about_me = models.TextField(_('about me'), blank=True)
+    #Added by me
+    telefono =  models.CharField(_('Telefono'), max_length=30, blank=True, null=True)
+    celular =  models.CharField(_('Celular'), max_length=30, blank=True, null=True)
+    dircasa = models.CharField(_('Direccion casa'), max_length=255, blank=True, null=True)
+    ciudadcasa = models.CharField(_('Ciudad casa'), max_length=255, blank=True, null=True)
+    telcasa = models.CharField(_('Telefono casa'), max_length=40, blank=True, null=True)
+    dirofi = models.CharField(_('Direccion oficina'), max_length=255, blank=True, null=True)
+    ciudadofi = models.CharField(_('Ciudad oficina'), max_length=255, blank=True, null=True)
+    telofi = models.CharField(_('Telefono oficina'), max_length=40, blank=True, null=True)
+
 
     @property
     def age(self):

@@ -1,41 +1,166 @@
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
-
+{% load widget_tweaks %}
 {% block title %}{% trans "Account setup" %}{% endblock %}
 
-{% block content_title %}<h2 class="content-title">Account &raquo; {{ account.user.username }}</h2>{% endblock %}
-
 {% block content %}
+<div class="page_content clearfix">
+
+    <div class="left">
 
 
-  <ul id="profile-nav">
-      <li><a href="{% url userena_profile_detail user.username %}">{% trans "View profile" %}</a></li>
-      <li class="selected"><a href="{% url userena_profile_edit user.username %}">{% trans "Edit details" %}</a></li>
-      <li><a href="{% url userena_password_change user.username %}">{% trans "Change password" %}</a></li>
-      <li><a href="{% url userena_email_change user.username %}">{% trans "Change email" %}</a></li>
-  </ul>
+<!-- <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" class="btn set2" value="{% trans "Save changes" %}" />
+</form> -->
+
+  <div class="box box_sep">
+      <div class="main_icon personal">
+          <h1>Información personal</h1>
+          <p>Ya eres parte de Cittybox, ahora queremos saber más de ti:</p>
+      </div>
+
+      <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+          {{ form.errors }}
+          <p class="inlined wset2">
+              <label>Nombre</label>
+              {{ form.first_name|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Apellido</label>
+              {{ form.last_name|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Fecha de nacimiento</label>
+              {{ form.birth_date|add_class:"text" }}
+          </p>
+
+          <p class="inlined wset2">
+              <label>Ciudad</label>
+              {{ form.location|add_class:"text" }}
+          </p>
+
+          <div style="display:none">
+          {{ form.language }}
+          {{ form.privacy }}
+            <p class="inlined wset2">
+              <label>Direcci&oacute;n de tu Casa</label>
+              {{ form.dircasa|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Ciudad Casa</label>
+              {{ form.ciudadcasa|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Direccion Oficina</label>
+              {{ form.dirofi|add_class:"text" }}
+          </p>
+
+         <p class="inlined wset2">
+              <label>Ciudad Oficina</label>
+              {{ form.ciudadofi|add_class:"text" }}
+          </p>
+
+          <p class="wset2 cleared">
+              <label>Telefono Oficina</label>
+              {{ form.telofi|add_class:"text" }}
+          </p>
+
+          </div>
+
+          <div class="info_box box_gradient1">
+              <h5 class="aviso_icn">Aviso</h5>
+              <p>Esta información es vital para nosotros. Cittybox 
+                  no divulgará ni dará a terceros la información que 
+                  digites en tu perfil personal.</p>
+          </div>
+          <p class="cleared"></p>
+          <input type="submit" class="btn set2" value="{% trans "Guardar" %}" />
+      </form>
+
+  </div>
+
+  <div class="box box_sep">
+      <div class="main_icon envio">
+          <h1>Datos de envío</h1>
+          <p>Asegurate de colocar bien los datos de envío, así no tendremos inconvenientes al momento de enviar la mercancia:</p>
+      </div>
+
+      <form action="" enctype="multipart/form-data" method="post">{% csrf_token %}
+          
+          <p class="inlined wset2">
+              <label>Direcci&oacute;n de tu Casa</label>
+              {{ form.dircasa|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Ciudad Casa</label>
+              {{ form.ciudadcasa|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Direccion Oficina</label>
+              {{ form.dirofi|add_class:"text" }}
+          </p>
+
+         <p class="inlined wset2">
+              <label>Ciudad Oficina</label>
+              {{ form.ciudadofi|add_class:"text" }}
+          </p>
+
+          <p class="wset2 cleared">
+              <label>Telefono Oficina</label>
+              {{ form.telofi|add_class:"text" }}
+          </p>
+
+          <div style="display:none">
+          {{ form.language }}
+          {{ form.privacy }}
+          <p class="inlined wset2">
+              <label>Nombre</label>
+              {{ form.first_name|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Apellido</label>
+              {{ form.last_name|add_class:"text" }}
+          </p>
+          <p class="inlined wset2">
+              <label>Fecha de nacimiento</label>
+              {{ form.birth_date|add_class:"text" }}
+          </p>
+
+          <p class="inlined wset2">
+              <label>Ciudad</label>
+              {{ form.location|add_class:"text" }}
+          </p>
+          </div>
+
+          <div class="info_box box_gradient1">
+              <h5 class="aviso_icn">Aviso</h5>
+              <p>Esta información es vital para nosotros. Cittybox 
+                  no divulgará ni dará a terceros la información que 
+                  digites en tu perfil personal.</p>
+          </div>
+          <input type="submit" class="btn set2" value="{% trans "Guardar Datos de envio" %}" />
+      </form>
 
 
-   <form action="" enctype="multipart/form-data" method="post">
-       {% if user.username == account.user.username %}
-          <ul id="box-nav">
-              <li class="first"><a href="{% url userena_detail user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-              <li class="selected"><a href="{% url userena_edit account.user.username %}">{% trans "Edit profile" %}</a></li>
-              <li><a href="{% url userena_password_change account.user.username %}">{% trans "Change password" %}</a></li>
-              <li class="last"><a href="{% url userena_email_change account.user.username %}">{% trans "Change email" %}</a></li>
-          </ul>
-          {% endif %}
-       {% csrf_token %}
-        <fieldset>
-        <legend>{% trans "Edit Profile" %}</legend>
-        {{ form.as_p }}
-        </fieldset>
-        <input type="submit" value="{% trans "Save changes" %}" />
-    </form>
+  </div>
 
-    <div id="email_form"></div>
-    <div id="password_form"></div>
+  <div class="box box_sep">
+      <div class="main_icon cuenta">
+          <h1>Datos de tu cuenta</h1>
+          <p>Configura correctamente los datos de tu cuenta para que no tengas ningún problema al ingresar</p>
+      </div>
 
+      <div style="display:none" id="email_form"></div>
+      <div id="password_form"></div>
+
+
+  </div>
+
+
+    </div><!-- END left -->
+   
+   {% include 'shared/sidebar.html' %}
     
 {% endblock %}
 
