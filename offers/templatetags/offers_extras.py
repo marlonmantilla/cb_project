@@ -12,3 +12,8 @@ def offers_list(context):
 	paginator = Paginator(offers_list,OFFERS_PER_PAGE)
 	offers =  paginator.page(1)
 	return { 'offers': offers,'MEDIA_URL': MEDIA_URL, "request":context['request'] } 
+
+@register.inclusion_tag('offers/oferta_del_dia.html',takes_context=True)
+def oferta_del_dia(context):
+	oferta = Oferta.objects.filter(oferta_del_dia=True)[0]
+	return { 'oferta':oferta,'MEDIA_URL': MEDIA_URL }

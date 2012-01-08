@@ -1,0 +1,54 @@
+{% load offers_extras %}
+<div class="right">
+
+                        <div class="sidebar_box">
+
+                            <h4>Mi cuenta</h4>
+                            <div class="sidebar_bxc nopaded">
+                                {% if user.is_authenticated %}
+                                <ul class="list_set1">
+                                    
+                                    
+                                     <li class="selected"><a href="{% url userena_profile_detail user.username %}">Mi Locker</a></li>
+                                        <li class="box_gradient1"><a href="#">Consultar estado paquete</a></li>
+                                        <li class="box_gradient1"><a class="prealert_btn" href="{% url prealertar %}">Prealertar paquetes</a></li>
+                                        <li><a href="{% url userena_profile_edit user.username %}">Configuracion de mi cuenta</a></li>
+                                         <li class="box_gradient1"><a class="invite_btn cboxElement" href="javascript://">Invitar amigos</a></li>
+                                   
+                                    
+                                </ul><!-- END list_set1 -->
+                               {% endif %}
+
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                        
+                        {% oferta_del_dia %}
+
+                        <div class="sidebar_box">
+
+                            <h4>Calcula tu envio</h4>
+                            <div class="sidebar_bxc">
+                                <p style="color: rgb(102, 102, 102); font-size: 14px; text-align: center;">Quieres saber cuanto te cuesta?</p>
+                                <a style="margin: auto;" class="btn set1" href="">Calculadora</a>
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                        <div class="sidebar_box">
+
+                            <h4>Categorias Cittybox</h4>
+                            <div class="sidebar_bxc nopaded">
+                                <ul class="list_set1">
+                                    <li><a href="#">Computadores</a></li>
+                                    <li><a href="#">Hogar</a></li>
+                                    <li><a href="#">Electromesticos</a></li>
+                                    <li><a href="#">Juegos y Consolas</a></li>
+                                    <li><a href="#">Ropa y Accesorios</a></li>
+                                </ul><!-- END list_set1 -->
+                            </div>
+
+                        </div><!-- END sidebar_box -->
+
+                    </div><!-- END right -->
