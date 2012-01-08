@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load offers_extras %}
 {% block content %}
 
 <div class="page_content clearfix">
@@ -16,86 +16,39 @@
                             <div class="shop_left">
 
                                 <ul class="shops_list">
-                                    <li><a rel="cat1" href="javascript://" class="current">Electrodomesticos</a></li>
-                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
-                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
-                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
-                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
-                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
-                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
+                                {% for cat in categories %}
+                                   <li><a rel="cat{{cat.id}}" href="javascript://" {% if forloop.first %}class="current"{% endif %}>{{cat.nombre}}</a></li>
+                                {% endfor %}
                                 </ul>
 
                             </div><!-- END shop_left -->
 
                             <div class="shop_right box_gradient1">
-                                <div id="cat1">
+                                
+                                {% for cat in categories %}
+                               
+                                <div id="cat{{cat.id}}" {% if not forloop.first %}style="display:none"{% endif %}>
                                     <div class="pagination">
                                         <a href="">1</a>
                                         <a href="">2</a>
                                     </div>
 
                                     <ul class="shop_list horz clearfix">
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
-                                        </li>
+                                    	{% stores_list cat %}
                                     </ul>
 
                                     <div class="pagination">
                                         <a href="">1</a>
                                         <a href="">2</a>
                                     </div>
-                                </div><!-- END cat1 -->
-
-
-                                <div id="cat2" style="display:none">
-                                    <div class="pagination">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                    </div>
-
-                                    <ul class="shop_list horz clearfix">
-                                    {% for store in stores %}
-                                        <li>
-                                            <a href="{{ store.url }}"><img src="{{ MEDIA_URL }}{{ store.imagen }}" />{{ store.nombre }}</a>
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
-
-                                    <div class="pagination">
-                                        <a href="">1</a>
-                                        <a href="">2</a>
-                                    </div>
-                                </div><!-- END cat2 -->
-                                <div id="cat3" style="display:none"></div><!-- END cat3 -->
+                                </div>
+                                {% endfor %}
 
                             </div><!-- END shop_right -->
 
                         </div><!-- END shop_container -->
 
+                        {% offers_carrousel %}
 
                     </div>
 

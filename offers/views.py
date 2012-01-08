@@ -72,4 +72,5 @@ def add_to_favorites(request, offer_id):
 
 def stores(request):
 	stores = Tienda.objects.all()
-	return render_to_response('offers/stores.html',{'stores':stores}, context_instance=RequestContext(request))
+	categories = Categoria.objects.all().order_by('nombre')
+	return render_to_response('offers/stores.html',{'stores':stores, 'categories':categories}, context_instance=RequestContext(request))

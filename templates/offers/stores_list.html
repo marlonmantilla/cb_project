@@ -1,0 +1,5 @@
+{% for store in stores_list %}
+    <li>
+        <a target="_blank" href="{{ store.url }}"><img width="132" src="{{ MEDIA_URL }}{{ store.imagen }}" /></a>
+    </li>
+{% endfor %}

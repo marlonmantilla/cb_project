@@ -771,6 +771,8 @@ form .info_box{
 }
 .shop_container{
     position: relative;
+    margin-bottom: 20px;
+    height:300px;
 }
 .shop_container .shop_left{
     position: absolute;
