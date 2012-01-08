@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
-from offers.models import Oferta, Categoria, Favoritas
+from offers.models import Oferta, Categoria, Favoritas, Tienda
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.http import HttpResponse
@@ -69,3 +69,7 @@ def add_to_favorites(request, offer_id):
 	print favorita
 	print favorita.save()
 	return HttpResponse("OK")
+
+def stores(request):
+	stores = Tienda.objects.all()
+	return render_to_response('offers/stores.html',{'stores':stores}, context_instance=RequestContext(request))

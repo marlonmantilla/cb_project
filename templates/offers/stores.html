@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page_content clearfix">
+
+                    <div class="left">
+
+                        <div class="main_title">
+                            <h1>Tiendas Cittybox</h1>
+                            <p>En Cittybox categorizamos las mejores tiendas a nivel mundial para facilitar tu busqueda:</p>
+                        </div>
+
+                        <div class="shop_container clearfix">
+
+                            <div class="shop_left">
+
+                                <ul class="shops_list">
+                                    <li><a rel="cat1" href="javascript://" class="current">Electrodomesticos</a></li>
+                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
+                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
+                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
+                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
+                                    <li><a rel="cat2" href="javascript://">Ropa</a></li>
+                                    <li><a rel="cat3" href="javascript://">Relojes</a></li>
+                                </ul>
+
+                            </div><!-- END shop_left -->
+
+                            <div class="shop_right box_gradient1">
+                                <div id="cat1">
+                                    <div class="pagination">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                    </div>
+
+                                    <ul class="shop_list horz clearfix">
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda1.png" /></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><img src="img/tiendas/tienda2.png" /></a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="pagination">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                    </div>
+                                </div><!-- END cat1 -->
+
+
+                                <div id="cat2" style="display:none">
+                                    <div class="pagination">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                    </div>
+
+                                    <ul class="shop_list horz clearfix">
+                                    {% for store in stores %}
+                                        <li>
+                                            <a href="{{ store.url }}"><img src="{{ MEDIA_URL }}{{ store.imagen }}" />{{ store.nombre }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+
+                                    <div class="pagination">
+                                        <a href="">1</a>
+                                        <a href="">2</a>
+                                    </div>
+                                </div><!-- END cat2 -->
+                                <div id="cat3" style="display:none"></div><!-- END cat3 -->
+
+                            </div><!-- END shop_right -->
+
+                        </div><!-- END shop_container -->
+
+
+                    </div>
+
+                    {% include 'shared/sidebar.html' %}
+</div>
+
+{% endblock %}
+
+{% block javascript_extra %}
+$('.shops_list a').click(function(){
+                    if( !$(this).hasClass('current') ){
+                        $('.shops_list a').removeClass('current');
+                        $(this).addClass('current');
+                        div_id = $(this).attr('rel');
+                        $(".shop_right > div").hide();
+                        $("#"+div_id).fadeIn();
+                    }
+                })
+{% endblock %}

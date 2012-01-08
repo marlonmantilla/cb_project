@@ -769,6 +769,61 @@ form .info_box{
 .jcarousel-prev-disabled{
     background-position: 0 -26px;
 }
+.shop_container{
+    position: relative;
+}
+.shop_container .shop_left{
+    position: absolute;
+    width: 206px;
+}
+.shop_container .shop_right{
+    padding-left: 231px;
+    padding-bottom: 20px;
+}
+.shop_container .pagination{
+    margin: 0;
+    margin-bottom: 14px;
+}
+.shops_list{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.shops_list li{
+    line-height: 44px;
+}
+.shops_list li a.current{
+    background: url("../img/tiendas/arrow.png") no-repeat scroll 0 0 transparent;
+    color: #FFFFFF;
+    display: block;
+
+}
+.shops_list li a{
+    background: url("../img/tiendas/item.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    color: #6B6B6B;
+    font-size: 17px;
+    text-decoration: none;
+    padding-left: 15px;
+    height: 44px;
+    width: 192px;
+}
+
+.shop_list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.shop_list li{
+    margin-bottom: 20px !important;
+    margin-right: 16px !important;
+}
+.shop_list li a{
+
+}
+.shop_list li img{
+
+}
 .offer_list{
     height: 146px;
     margin: 0;
