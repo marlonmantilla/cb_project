@@ -1,15 +1,25 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template.context import RequestContext
 from shippings.forms import PrealertForm
+from django.http import HttpResponse
+from django.utils import simplejson
 
 def prealertar(request):
 
 	if request.method == 'POST':
 		form = PrealertForm(request.POST)
+		
 		if form.is_valid():
-			form.cleaned_data['usuario'] = request.user.get_profile()
-			print form.cleaned_data
-			form.save()
+			envio = form.save(commit=False)
+			envio.usuario = request.user.get_profile()
+			envio.save()
+			productos = form.cleaned_data['productos']
+			
+			for producto in productos:
+				envio.productos.add(producto)
+				
+			envio.save()
+			return redirect("/accounts/%s" % request.user)
 	else:
 		form = PrealertForm()
 		

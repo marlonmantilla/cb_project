@@ -19,8 +19,8 @@
                                         <ul class="offer_list clearfix">
                                         {% for offer in offers %}
                                             <li>
-                                                <img height="95" width="100" src="{{ MEDIA_URL }}{{ offer.imagen }}" alt="{{ offer.titulo|truncatewords:5 }}" />
-                                                <a href="{{ offer.url }}">{{ offer.titulo|truncatewords:3 }}</a>
+                                                <a target="_blank" href="{{ offer.url }}"><img height="95" width="100" src="{{ MEDIA_URL }}{{ offer.imagen }}" alt="{{ offer.titulo|truncatewords:5 }}" /></a>
+                                                <a target="_blank" href="{{ offer.url }}">{{ offer.titulo|truncatewords:3 }}</a>
                                                 <span class="price">${{ offer.precio }}</span>
                                             </li>
                                           {% endfor %}  

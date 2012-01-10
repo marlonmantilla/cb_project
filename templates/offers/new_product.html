@@ -1,0 +1,18 @@
+{% load widget_tweaks %}
+<tr>
+    <td>
+    	{% csrf_token %}
+    	{% if product_id %}
+    		<input type="hidden" name="product_id" class="product_id" value="{{ product_id }}"  />
+    	{% endif %}
+    	{{ form.nombre|add_class:"text" }}
+    </td>
+    <td>
+    	{{ form.cantidad|add_class:"text tiny" }}
+    </td>
+    <td>
+    	{{ form.valor|add_class:"text tiny" }}
+    	<a href="javascript://" onclick="add_product(this)">Guardar</a>
+    </td>
+    <td><a href="javascript://" class="delete_icn">Eliminar</a></td>
+</tr>

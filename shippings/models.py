@@ -17,10 +17,20 @@ class Envio(models.Model):
 	guia = models.CharField(_("No. de guia"), blank=False, unique=True, max_length=255)	
 	transportadora = models.ForeignKey(Transportadora)
 	productos = models.ManyToManyField(Producto, verbose_name="Productos")
-	observaciones = models.TextField(_("Observaciones"))
-	estado = models.IntegerField(default=0)
-	usuario = models.ForeignKey(Profile, blank=True)
+	observaciones = models.TextField(_("Observaciones"), blank=True)
+	estado = models.IntegerField(default=0, blank=True, null=True)
+	usuario = models.ForeignKey(Profile, blank=True, null=True)
+	ESTADOS = {'recibido':1, 'no_recibido':0}
 	
 	def __unicode__(self):
 		return self.guia
+
+	def estado_str(self):
+		if self.estado == Envio.ESTADOS['no_recibido']:
+			return '<span style="color:red;">Por Recibir</span>'
+		else:
+			return '<span style="color:green;">Recibido</span>'
+	estado_str.allow_tags = True
+	estado_str.short_description = "Estado"
+		
 			

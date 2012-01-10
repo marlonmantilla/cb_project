@@ -22,7 +22,7 @@ class Producto(models.Model):
 	nombre = models.CharField(_("Nombre"), blank=False, max_length=255)
 	cantidad = models.IntegerField(_("Cantidad"),default=1, blank=True)
 	valor = models.CharField(_("Valor"), blank=False, max_length=255)
-	
+	usuario = models.ForeignKey(Profile, blank=True, null=True)
 	def __unicode__(self):
 		return self.nombre
 

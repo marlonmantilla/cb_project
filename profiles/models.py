@@ -36,6 +36,8 @@ class Profile(UserenaLanguageBaseProfile):
     ciudadofi = models.CharField(_('Ciudad oficina'), max_length=255, blank=True, null=True)
     telofi = models.CharField(_('Telefono oficina'), max_length=40, blank=True, null=True)
 
+    def __unicode__(self):
+        return "%s %s" % (self.user.first_name,self.user.last_name)
 
     @property
     def age(self):

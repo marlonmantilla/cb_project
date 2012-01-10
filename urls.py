@@ -18,6 +18,9 @@ urlpatterns = patterns('',
     url(r'^search/$', 'offers.views.search', name='search'),
     url(r'^add_to_favorites/(?P<offer_id>[\d]+)/$', 'offers.views.add_to_favorites', name='add_to_favorites'),
     url(r'^tiendas/$', 'offers.views.stores', name='stores'),
+    url(r'^new_product/$', 'offers.views.new_product', name='new_product'),
+    
+
 
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
 	url(r'^$', 'views.home', name='home'),

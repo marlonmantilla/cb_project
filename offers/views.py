@@ -1,9 +1,11 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
-from offers.models import Oferta, Categoria, Favoritas, Tienda
+from offers.models import Oferta, Categoria, Favoritas, Tienda, Producto
+from offers.forms import ProductForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist
 import operator
 
 OFFERS_PER_PAGE = 10
@@ -14,6 +16,36 @@ def index(request):
 	return render_to_response('offers/index.html', {'main_offer':oferta_del_dia, 
 	'categorias': categorias, }, context_instance=RequestContext(request)) 
 
+def new_product(request):
+	if request.method == "POST":
+
+		if 'product_id' in request.POST:
+			id = request.POST['product_id']
+			print id
+			producto = Producto.objects.get(pk=id)
+			form = ProductForm(request.POST, instance=producto)
+		else:
+			form = ProductForm(request.POST)
+		
+		if form.is_valid():
+			
+			if 'product_id' in request.POST:
+				producto.save()
+				return render_to_response('offers/new_product.html', 
+				{'form':form, 'product_id':id }, context_instance=RequestContext(request))				
+			else:
+				producto = form.save(commit=False)
+				producto.usuario = request.user.get_profile()
+				producto.save()
+				return render_to_response('offers/new_product.html', 
+				{'form':form, 'product_id':producto.id }, context_instance=RequestContext(request))
+
+		else:
+			return HttpResponse("ERROR")
+	else:
+		form = ProductForm()
+
+	return render_to_response('offers/new_product.html', {'form':form }, context_instance=RequestContext(request))
 
 def filtrar_categoria(request, categoria_id):
 	offers_list = Oferta.objects.filter(categoria=categoria_id)
@@ -29,7 +61,7 @@ def filtrar_categoria(request, categoria_id):
 	return render_to_response('offers/offers_list.html',{'offers':offers, 'by_cat':True,}, context_instance=RequestContext(request))
 
 def offers_list(request):
-	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('fecha_creacion','titulo')
+	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')
 	paginator = Paginator(offers_list, OFFERS_PER_PAGE) 
 	page = request.GET.get('page')
 	try:

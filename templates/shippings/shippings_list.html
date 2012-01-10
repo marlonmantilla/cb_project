@@ -5,21 +5,21 @@
                                         <td><a href="">{{ shipping.guia }}</a></td>
                                         <td>
                                             <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">Kindle Fire, Full Color 7... </a>
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">producto</a>
                                                 <div class="tooltip tooltip_1" style="display: none;">
                                                     <span class="tarrow"></span>
                                                     <div class="tooltip_cont">
                                                         <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#">Kindle Fire, Full Color 7... </a>
+                                                        <a href="#"></a>
                                                         <span class="old_price">$299.00 </span><span class="price">$199.00</span>
                                                         <span class="store">Oferta de <a href="#">amazon</a></span>
                                                     </div><!-- END tooltip_cont -->
                                                 </div><!-- END tooltip -->
                                             </div>
                                         </td>
-                                        <td>{{ shipping.tipo }}</td>
-                                        <td>{{ shipping.pais }}</td>
-                                        <td><a class="check_icn" href="#">{{ shipping.estado }}</a></td>
+                                        <td>{{ shipping.transportadora }}</td>
+                                        
+                                        <td><a class="{% if shipping.estado == 1 %}check_icn{% else %}warning_icn{% endif %}" href="#"></a></td>
                                     </tr>
 
 {% endfor %}

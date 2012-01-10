@@ -10,7 +10,7 @@ register = template.Library()
 
 @register.inclusion_tag('offers/offers_list.html',takes_context=True)
 def offers_list(context):
-	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('fecha_creacion','titulo')
+	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')
 	paginator = Paginator(offers_list,OFFERS_PER_PAGE)
 	offers =  paginator.page(1)
 	return { 'offers': offers,'MEDIA_URL': MEDIA_URL, "request":context['request'] } 
@@ -27,7 +27,7 @@ def categories_list(context):
 
 @register.inclusion_tag('offers/offers_carrousel.html',takes_context=True)
 def offers_carrousel(context):
-	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('fecha_creacion','titulo')
+	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')[0:20] 
 	oferta = Oferta.objects.filter(oferta_del_dia=True)[0]
 	return {'offers':offers_list,'MEDIA_URL': MEDIA_URL, 'oferta':oferta, }
 
