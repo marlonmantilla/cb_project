@@ -13,10 +13,10 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'cittybox_db.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
+        'USER': 'cittybox_db',                      # Not used with sqlite3.
+        'PASSWORD': 'arbolada_cittybox',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
@@ -50,7 +50,7 @@ MEDIA_URL = '/media/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/media/admin/'
+ADMIN_MEDIA_PREFIX = '/static/admin/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -99,17 +99,21 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-ROOT_URLCONF = 'Cittybox.urls'
+ROOT_URLCONF = 'cb_project.urls'
 
 TEMPLATE_DIRS = (
     abspath(PROJECT_ROOT, 'templates')
 )
+
+STATIC_URL = 'http://cittybox.com/static/'
+STATIC_ROOT = '/home/cittybox/webapps/static_media/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'django.contrib.messages',
     'django.contrib.admin',
     'easy_thumbnails',
@@ -119,9 +123,9 @@ INSTALLED_APPS = (
     'userena.contrib.umessages',
     'profiles',
     'offers',
-	'shippings',
+    'shippings',
     'debug_toolbar',
-	'widget_tweaks',
+    'widget_tweaks',
     'django_extensions',
 )
 
