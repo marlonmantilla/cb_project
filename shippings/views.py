@@ -4,6 +4,19 @@ from shippings.forms import PrealertForm
 from django.http import HttpResponse
 from django.utils import simplejson
 
+SHIPPINS_PER_PAGE = 2
+
+def envios_list(request):
+	envios_list = Envio.objects.filter(usuario=user)
+	paginator = Paginator(envios_list, SHIPPINS_PER_PAGE) 
+	page = request.GET.get('page')
+	try:
+		envios = paginator.page(page)
+	except PageNotAnInteger, EmptyPage:
+		envios = paginator.page(1)
+	
+	return render_to_response('shippings/envios_list.html', {'shippings':envios}, context_instance=RequestContext(request))
+
 def prealertar(request):
 
 	if request.method == 'POST':

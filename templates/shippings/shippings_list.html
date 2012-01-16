@@ -1,11 +1,14 @@
 {% for shipping in shippings %}
 
 
-<tr>
+<tr class="{% cycle 'odd' 'even' %}">
                                         <td><a href="">{{ shipping.guia }}</a></td>
                                         <td>
                                             <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">producto</a>
+                                                <a class="tooltip_trigger tooltip_1" href="javascript://">{% for producto in shipping.productos.all|slice:":3" %}
+                                                {{ producto }}
+                                                {% endfor %}
+                                                </a>
                                                 <div class="tooltip tooltip_1" style="display: none;">
                                                     <span class="tarrow"></span>
                                                     <div class="tooltip_cont">

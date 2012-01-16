@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 import operator
 
-OFFERS_PER_PAGE = 10
+OFFERS_PER_PAGE = 12
 
 def index(request):
 	oferta_del_dia = get_object_or_404(Oferta, oferta_del_dia=True)

@@ -2,7 +2,7 @@
 <div class="pagination" style="width:100%">
     <span class="step-links">
         {% if offers.has_previous %}
-        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><<</a>
+        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><</a>
         {% endif %}
 
         <span class="current">
@@ -10,7 +10,7 @@
         </span>
 
         {% if offers.has_next %}
-            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">>></a>
+            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">></a>
         {% endif %}
     </span>
 </div>
@@ -40,7 +40,7 @@
 <div class="pagination" style="width:100%">
     <span class="step-links">
         {% if offers.has_previous %}
-        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><<</a>
+        <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.previous_page_number }}"><</a>
         {% endif %}
 
         <span class="current">
@@ -48,10 +48,10 @@
         </span>
 
         {% if offers.has_next %}
-            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">>></a>
+            <a onclick="paginate(this{% if by_cat %},true {% endif %});" href="javascript://" rel="?page={{ offers.next_page_number }}">></a>
         {% endif %}
     </span>
 </div>
 {% else %}
-No hay resultados...
+<p style="padding-top: 10px;text-align: center;font-weight: bold;font-size: 15px;">No hay resultados...</p>
 {% endif %}

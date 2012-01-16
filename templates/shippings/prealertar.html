@@ -77,7 +77,6 @@
                 new_tr = link_btn.parents('tr').replaceWith(data);
                 if ( !editing ){
                     pro_id = $('#products_list input.product_id').last().val();
-                    alert(pro_id);
                     $("#id_productos").append("<option selected='selected' value='"+pro_id+"'>Producto</option>")
                 }
                 $.fn.colorbox.resize();
