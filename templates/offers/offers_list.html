@@ -1,3 +1,4 @@
+{% load offers_extras %}
 {% if offers.object_list %}
 <div class="pagination" style="width:100%">
     <span class="step-links">
@@ -20,10 +21,14 @@
 	<li class="box_gradient1 main">
 		<div class="top_links clearfix">
             
-			<ul class="horz tl_l"><li><a rel="{{ offer.id }}" class="add_to_favorites" onclick="favorites(this);" href="javascript://">Agregar a favoritos</a></li></ul>
+			<ul class="horz tl_l">
+                <li>
+                {% is_favorite offer %}
+                </li>
+            </ul>
 
 			<div class="share_actions tl_r">
-				<ul class="horz"><li class="font11px">Compartir en</li><li><a class="facebook_share" href="#">Facebook</a></li><li><a  href="#" class="twitter_share">Twitter</a></li></ul>
+				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Entra a mmi pagina" st_url="http://marlonmantilla.com" class='st_twitter' ></span></li><li><span  class='st_facebook'   st_url="http://marlonmantilla.com"></span></li></ul>
 			</div>
 		</div><!-- End top_links -->
 

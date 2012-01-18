@@ -20,7 +20,9 @@ urlpatterns = patterns('',
     url(r'^tiendas/$', 'offers.views.stores', name='stores'),
     url(r'^new_product/$', 'offers.views.new_product', name='new_product'),
     
-
+    url(r'^login/$', 'profiles.views.login_user', name='login'),
+    url(r'^logout/$', 'profiles.views.logout_user', name='logout'),
+    
 
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
 	url(r'^$', 'views.home', name='home'),

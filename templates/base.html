@@ -18,6 +18,7 @@
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/colorbox/colorbox.css" />
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+    <script type="text/javascript">var switchTo5x=false;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'3dbe320c-cc16-4fc0-8c08-2f8fcbadff70'});</script>
   </head>
   <body>
   <div class="container">
@@ -70,7 +71,7 @@
                           <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
                           <a href="{% url userena_profile_detail user %}">{{ user }}</a>
                         </li>
-                        <li><a href="{% url userena_signout %}">Salir</a></li>
+                        <li><a href="{% url logout %}">Salir</a></li>
                         {% endif %}
                         <li><a href="">Contacto</a></li>
                         <li><a href="">Ayuda</a></li>

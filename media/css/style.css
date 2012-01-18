@@ -606,9 +606,17 @@ table tr.odd{
     font-size: 14px;
     margin: 0;
 }
+.error_message{
+    background: none repeat scroll 0 0 #FEF1EC;
+    color: #CD0A0A;
+    margin-top: 7px;
+    padding: 7px;
+    display:none;
+}
 .login_box form .text{
     font-size: 11px;
     padding: 5px;
+    width: 224px;
 }
 .login_box form label{
     font-size: 11px;
@@ -1334,7 +1342,8 @@ footer .footer_links li.main_title{
     outline:none;
 }
 .add_to_favorites:hover,.add_to_favorites.active{
-    background-position: 0 -20px
+    background-position: 0 -20px;
+    outline:none;
 }
 .facebook_share,.twitter_share{
     background: url(../img/icn/shareicns.png) no-repeat;

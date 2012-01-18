@@ -11,16 +11,30 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
-        'USER': 'cittybox_db',                      # Not used with sqlite3.
-        'PASSWORD': 'arbolada_cittybox',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+if os.environ.get('DEVELOPMENT', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
+            'USER': 'cittybox_db',                      # Not used with sqlite3.
+            'PASSWORD': 'arbolada_cittybox',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
     }
-}
+    ADMIN_MEDIA_URL = '/static/admin/'
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
+            'USER': 'marman',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
+    ADMIN_MEDIA_URL = '/media/admin/'
 
 
 TIME_ZONE = 'America/Bogota'
@@ -50,7 +64,7 @@ MEDIA_URL = '/media/'
 # URL prefix for admin static files -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = ADMIN_MEDIA_URL
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -113,7 +127,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',#Only for production
     'django.contrib.messages',
     'django.contrib.admin',
     'easy_thumbnails',

@@ -1,22 +1,54 @@
 {% load widget_tweaks %}
 {% load i18n %}
 
-			<form id="signin_form" action="{% url userena_signin %}" method="POST">
-				{% csrf_token %}
-				{{ form.non_field_errors }}
-				<p class="inlined wset1">
-					<label>Tu Nombre de usuario</label>
-					{{ form.identification|add_class:"text" }}
-				</p>
-				
-				<p class="inlined wset1">
-					<label>Tu contraseña</label>
-					{{ form.password|add_class:"text" }}
-				</p>
-				
-				<p>
-					<input type="submit" value="Ingresar" class="btn set2">
-				</p>
-			</form>
+<form id="signin_form" action="{% url login %}" method="POST">
+	{% csrf_token %}
+	{{ form.non_field_errors }}
+	<div class="error_message">
+	</div>
+	<p class="inlined wset1">
+		<label>Tu Nombre de usuario</label>
+		{{ form.identification|add_class:"text required" }}
+	</p>
+	
+	<p class="inlined wset1">
+		<label>Tu contraseña</label>
+		{{ form.password|add_class:"text required" }}
+	</p>
+	
+	<p>
+		<input type="submit" value="Ingresar" class="btn set2">
+	</p>
+</form>
+
+<script type="text/javascript">
+	
+	function login(elem){
+		form = $(elem);
+		url = form.attr("action");
+		
+		$.ajax({
+			url: url,
+			type: "POST",
+			data: form.serialize(),
+			success: function(data){
+				if( data.status == 200 ){
+					document.location = "{% url home %}"
+				}else{
+					form.find(".error_message").html(data.message).show();
+				}
+			}
+		});
+
+	}
+
+	$("#signin_form").validate({
+	 submitHandler: function(form) {
+	   login(form);
+	   return false;
+	 }
+	});
+
+</script>
 
 		

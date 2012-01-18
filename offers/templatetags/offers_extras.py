@@ -1,12 +1,23 @@
 from django import template
 from django.shortcuts import get_object_or_404
-from offers.models import Oferta, Categoria, Tienda
+from offers.models import Oferta, Categoria, Tienda, Favoritas
 from settings import MEDIA_URL
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from offers.views import OFFERS_PER_PAGE
 from django.db.models import Q
+from django.core.exceptions import ObjectDoesNotExist
 
 register = template.Library()
+
+@register.inclusion_tag('offers/favorite.html',takes_context=True)
+def is_favorite(context, offer):
+	try:
+		Favoritas.objects.get(oferta=offer)
+		is_favorite = True
+	except ObjectDoesNotExist:
+		is_favorite = None
+
+	return { 'offer':offer, 'is_favorite': is_favorite,'MEDIA_URL': MEDIA_URL, "request":context['request'] }
 
 @register.inclusion_tag('offers/offers_list.html',takes_context=True)
 def offers_list(context):

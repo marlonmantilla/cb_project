@@ -29,27 +29,12 @@
                                         </select>
                                     </form>
                                 </div>
-
-                                <table>
-                                    <tbody><tr class="main_header box_gradient1">
-                                        <td>No. Pedido</td>
-                                        <td width="200">Producto</td>
-                                        <td>Transportadora</td>
-                                        <td>Estado</td>
-                                    </tr>
-                                    {% shippings_list profile %}
-                                    
-                                    
-                                </tbody></table>
+                                {% shippings_list profile %}
+                                
 
                             </div><!-- ENDS fancy_table -->
 
-                            <div class="pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                            </div>
+                            
 
                         </div>
 
@@ -61,52 +46,9 @@
 
                             <div class="fancy_table">
                                 <div class="table_header">
-                                    <form>
-                                        <label class="inlined">Filtrar por: </label>
-                                        <select class="tiny_select">
-                                            <option>Paquetes Recibidos</option>
-                                            <option>Paquetes Prealertados</option>
-                                        </select>
-                                    </form>
+                                    
                                 </div>
-                                <table>
-                                    <tbody><tr class="main_header box_gradient1">
-                                        <td>No. Pedido</td>
-                                        <td>Producto</td>
-                                        <td>Categoria</td>
-                                        <td>Pais origen</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                </tbody></table>
-
+                                {% ofertas_favoritas request.user %}
                             </div><!-- ENDS fancy_table -->
 
                         </div>

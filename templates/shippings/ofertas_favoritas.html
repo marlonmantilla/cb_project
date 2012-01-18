@@ -1,0 +1,19 @@
+<table>
+<tbody><tr class="main_header box_gradient1">
+    <td>Oferta</td>
+    <td>Categoria</td>
+    <td>Compartir</td>
+    <td></td>
+</tr>
+
+{% for offer in offers %}
+
+<tr>
+    <td><a href="">{{ offer.oferta.titulo }}</a></td>
+    <td>{{ offer.oferta.categoria }} </td>
+    <td></td>
+    <td><a href="#">Prealertar</a></td>
+</tr>
+{% endfor %}
+
+</tbody></table>
