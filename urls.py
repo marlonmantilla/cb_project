@@ -22,9 +22,11 @@ urlpatterns = patterns('',
     
     url(r'^login/$', 'profiles.views.login_user', name='login'),
     url(r'^logout/$', 'profiles.views.logout_user', name='logout'),
-    
-
+        
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
+    url(r'^shippings/filter_by_state/$', 'shippings.views.filter_by_state', name='filter_by_state'),
+
+
 	url(r'^$', 'views.home', name='home'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT }),
     (r'^i18n/', include('django.conf.urls.i18n')),

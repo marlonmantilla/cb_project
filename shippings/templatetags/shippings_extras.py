@@ -6,7 +6,11 @@ from offers.models import Oferta, Favoritas
 
 register = template.Library()
 
-SHIPPINGS_PER_PAGE = 2
+SHIPPINGS_PER_PAGE = 5
+
+@register.inclusion_tag('shippings/filter.html', takes_context=True)
+def shippings_filter(context):
+	return { 'states': Envio.ESTADOS }	
 
 @register.inclusion_tag('shippings/ofertas_favoritas.html')
 def ofertas_favoritas(user):
@@ -16,7 +20,7 @@ def ofertas_favoritas(user):
 @register.inclusion_tag('shippings/shippings_list.html', takes_context=True)
 def shippings_list(context, user):
 	request = context["request"]
-	shippings_list = Envio.objects.filter(usuario=user)
+	shippings_list = Envio.objects.filter(usuario=user).order_by('estado')
 	paginator = Paginator(shippings_list,SHIPPINGS_PER_PAGE)
 	if request.GET.get('page') != None:
 		page = request.GET.get('page')

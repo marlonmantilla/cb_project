@@ -1,0 +1,16 @@
+<form id="shippings_filter" action="{% url filter_by_state %}" method="POST">
+    <label class="inlined">Filtrar por: </label>
+    <select class="tiny_select" onchange="filter_by_state();">
+        {% for state, value in states.iteritems %}
+        	<option value="{{ value }}">{{ state }}</option>
+        {% endfor %}
+    </select>
+</form>
+<script type="text/javascript">
+	
+	function filter_by_state(){
+		alert(2);
+	}
+
+
+</script>

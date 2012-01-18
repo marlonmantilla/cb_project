@@ -68,8 +68,8 @@
                         </li>
                         {% else %}
                         <li>
-                          <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
-                          <a href="{% url userena_profile_detail user %}">{{ user }}</a>
+                          <!-- <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" /> -->
+                          <a href="{% url userena_profile_detail user %}">Mi Locker</a>
                         </li>
                         <li><a href="{% url logout %}">Salir</a></li>
                         {% endif %}

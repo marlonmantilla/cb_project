@@ -21,13 +21,7 @@
 
                             <div class="fancy_table">
                                 <div class="table_header">
-                                    <form>
-                                        <label class="inlined">Filtrar por: </label>
-                                        <select class="tiny_select">
-                                            <option>Paquetes Recibidos</option>
-                                            <option>Paquetes Prealertados</option>
-                                        </select>
-                                    </form>
+                                    {% shippings_filter %}
                                 </div>
                                 {% shippings_list profile %}
                                 
