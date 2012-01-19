@@ -11,30 +11,30 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if os.environ.get('DEVELOPMENT', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
-            'USER': 'cittybox_db',                      # Not used with sqlite3.
-            'PASSWORD': 'arbolada_cittybox',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
+        'USER': 'cittybox_db',                      # Not used with sqlite3.
+        'PASSWORD': 'arbolada_cittybox',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
-    ADMIN_MEDIA_URL = '/static/admin/'
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
-            'USER': 'marman',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-    ADMIN_MEDIA_URL = '/media/admin/'
+}
+ADMIN_MEDIA_URL = '/static/admin/'
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+#         'NAME': 'cittybox_db',                      # Or path to database file if using sqlite3.
+#         'USER': 'marman',                      # Not used with sqlite3.
+#         'PASSWORD': '',                  # Not used with sqlite3.
+#         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+#         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#     }
+# }
+# ADMIN_MEDIA_URL = '/media/admin/'
 
 
 TIME_ZONE = 'America/Bogota'
