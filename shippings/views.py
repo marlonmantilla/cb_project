@@ -10,7 +10,7 @@ SHIPPINS_PER_PAGE = 2
 def filter_by_state(request):
 	if request.POST:
 		state = request.POST.get('state')
-		
+		envios_list = Envio.objects.filter(usuario=user)	
 
 def envios_list(request):
 	envios_list = Envio.objects.filter(usuario=user)

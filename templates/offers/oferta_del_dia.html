@@ -4,11 +4,11 @@
     <div class="oferta_del_dia_cont">
 
         <div class="oferta_img">
-            <a href="{{ oferta.url }}"><img width="120" src="{{ MEDIA_URL }}{{ oferta.imagen }}"></a>
+            <a href="{% url show_offer oferta.tienda.nombre|slugify,oferta.id %}"><img width="120" src="{{ MEDIA_URL }}{{ oferta.imagen }}"></a>
         </div>
 
         <div class="oferta_info">
-            <a href="">{{ oferta.titulo|truncatewords:4 }} </a>
+            <a href="{% url show_offer oferta.tienda.nombre|slugify,oferta.id %}">{{ oferta.titulo|truncatewords:4 }} </a>
             {% if oferta.precio_anterior %}<span class="old_price">${{ oferta.precio_anterior }}</span>{% endif %}
             <span class="price">${{ oferta.precio }}</span>
         </div>

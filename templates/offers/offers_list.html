@@ -28,14 +28,14 @@
             </ul>
 
 			<div class="share_actions tl_r">
-				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Entra a mmi pagina" st_url="http://marlonmantilla.com" class='st_twitter' ></span></li><li><span  class='st_facebook'   st_url="http://marlonmantilla.com"></span></li></ul>
+				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Oferta en Cittybox" st_url="{% url show_offer offer.tienda.nombre|slugify,offer.id %}" class='st_twitter' ></span></li><li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="{% url show_offer offer.tienda.nombre|slugify,offer.id %}"></span></li></ul>
 			</div>
 		</div><!-- End top_links -->
 
-		<a target="_blank" href="{{ offer.url }}"><img height="120" width="120" src="{{ MEDIA_URL }}{{ offer.imagen }}" /></a>
+		<a  href="{% url show_offer offer.tienda.nombre|slugify,offer.id %}"><img height="120" width="120" src="{{ MEDIA_URL }}{{ offer.imagen }}" /></a>
 
 		<div class="offer_info">
-			<a href="{{ offer.url }}" target="_blank">{{ offer.titulo|truncatewords:5 }} </a>
+			<a href="{% url show_offer offer.tienda.nombre|slugify,offer.id %}" >{{ offer.titulo|truncatewords:5 }} </a>
 			<span class="price">${{ offer.precio }} </span>
 		</div>
 

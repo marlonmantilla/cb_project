@@ -1,5 +1,5 @@
 from django.db import models
-from offers.models import Producto
+from offers.models import Producto, Oferta
 from profiles.models import Profile
 from django.utils.translation import ugettext_lazy as _
 
@@ -20,6 +20,7 @@ class Envio(models.Model):
 	observaciones = models.TextField(_("Observaciones"), blank=True)
 	estado = models.IntegerField(default=0, blank=True, null=True)
 	usuario = models.ForeignKey(Profile, blank=True, null=True)
+	oferta = models.ForeignKey(Oferta, blank=True, null=True)
 	ESTADOS = {'recibido':1, 'no_recibido':0}
 	
 	def __unicode__(self):

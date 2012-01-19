@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^prealertar/$', 'shippings.views.prealertar', name='prealertar'),
     url(r'^shippings/filter_by_state/$', 'shippings.views.filter_by_state', name='filter_by_state'),
 
+    url(r'^ofertas/(?P<store>[-\w]+)/(?P<offer_id>\d+)/$', 'offers.views.show', name='show_offer'),
 
 	url(r'^$', 'views.home', name='home'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT }),

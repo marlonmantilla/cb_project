@@ -20,8 +20,14 @@ def is_favorite(context, offer):
 	return { 'offer':offer, 'is_favorite': is_favorite,'MEDIA_URL': MEDIA_URL, "request":context['request'] }
 
 @register.inclusion_tag('offers/offers_list.html',takes_context=True)
-def offers_list(context):
-	offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')
+def offers_list(context, store=None):
+	
+	if store != None:
+		offers_list = Oferta.objects.exclude(oferta_del_dia=True).filter(tienda=store).order_by('-fecha_creacion','titulo')
+		print "entro"
+		print offers_list
+	else:
+		offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')
 	paginator = Paginator(offers_list,OFFERS_PER_PAGE)
 	offers =  paginator.page(1)
 	return { 'offers': offers,'MEDIA_URL': MEDIA_URL, "request":context['request'] } 
