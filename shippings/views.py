@@ -52,7 +52,7 @@ def envios_list(request):
 	
 	return render_to_response('shippings/envios_list.html', {'shippings':envios}, context_instance=RequestContext(request))
 
-def prealertar(request, offer_id):
+def prealertar(request):
 
 	if request.method == 'POST':
 		form = PrealertForm(request.POST)
