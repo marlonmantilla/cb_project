@@ -163,8 +163,10 @@
                 {% endblock %}
                 
                 $(".prealert_btn").colorbox({transition:"none"});
+                $(".shop_colorbox").colorbox({transition:"none"});
+                
                 $('.slideshow').cycle({
-                    fx: 'scrollUp', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+                    fx: 'scrollLeft', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
                     timeout: 5000,
                     pager:  '#slider_pager'
                 });
@@ -187,6 +189,9 @@
                     $(".login_box").toggle();
                     return false;
                 });
+
+
+            
                 function mycarousel_initCallback(carousel)
                 {
                     // Disable autoscrolling if the user clicks the prev or next button.
@@ -213,6 +218,28 @@
                 });
                 
             });
+
+            function remove_product(elem, product_id){
+                link_btn = $(elem);
+                link_btn.parents("tr").remove();
+                inputs = link_btn.parents('tr').find('input');
+                query_set = "";
+                inputs.each(function(index, elem){
+                    name = $(this).attr('name');
+                    value = $(this).val();
+                    console.log(name)  ;  
+                    query_set+=name+"="+value+"&";
+                });
+                
+                $.ajax({
+                  url: "{% url delete_product %}",
+                  data: query_set,
+                  type: "POST",
+                  success: function(data){$('.selDiv')
+                    $("#id_productos option[value='"+product_id+"']").remove();
+                  }
+                });
+            }
         </script>
 
    </body>

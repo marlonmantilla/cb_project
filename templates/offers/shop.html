@@ -1,0 +1,40 @@
+<div class="oferta_del_dia expanded">
+	<h5><span class="offer_arrow"></span>Oferta de {{ offer.tienda }}</h5>
+
+	<div class="oferta_del_dia_cont">
+
+		<div class="oferta_left">
+
+			<div class="slider_ofertas">
+				<img src="{{MEDIA_URL}}{{ offer.imagen }}" width="287" />
+			</div>
+		</div>
+
+		<div class="oferta_right">
+			<h2><a target="_blank" href="#">{{ offer.titulo }}</a></h2>
+			<span class="price">${{ offer.precio }}</span> 
+			{% if offer.precio_anterior %}
+				<span class="old_price">{{ offer.precio_anterior }}</span>
+			{% endif %}
+			
+			<p><a target="_blank" href="{{ offer.url }}" class="btn set2">Comprar en {{ offer.tienda }}</a></p>
+			<p><a href="javascript://" onclick="lightbox();" class="btn set2">Compramos por ti</a></p>
+		</div>
+
+		
+
+	</div><!-- END oferta_del_dia_cont-->
+
+
+	</div>
+
+	<div class="info_box box_gradient1 cleared">
+              <h5 class="aviso_icn">Ayuda</h5>
+              <p style="font-size:12px">Recuerda que en Cittybox traemos los productos que quieras. Deseas saber como comprar en Cittybox? entra <a href="">aqu&iacute;</a>. </p>
+        </div>
+
+	<script>
+		function lightbox(){    
+		  $.fn.colorbox({href:"{% url autoshop offer.id %}"});
+		}
+	</script>

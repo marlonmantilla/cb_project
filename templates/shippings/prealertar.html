@@ -9,15 +9,15 @@
         {{ form.errors }}
         <p class="inlined wset1">
             <label>No. de Guia</label>
-            {{ form.guia|add_class:"text" }}
+            {{ form.guia|add_class:"text required" }}
         </p>
 
         <p class="inlined wset1">
             <label>Empresa transportadora</label>
-            {{ form.transportadora|add_class:"text" }}
+            {{ form.transportadora|add_class:"text required" }}
         </p>                                
         
-        <a class="add_link" onclick="add_producto('#products_list');" href="javascript://">Agregar producto</a>
+        <a class="add_link cleared" onclick="add_producto('#products_list');" href="javascript://">Agregar producto</a>
         <table id="products_list" class="productos nomargin font11px">
             <tr class="main_header box_gradient1">
                 <td>Producto</td>
@@ -31,7 +31,7 @@
 
         <p class="cleared">
             <label>Observaciones</label>
-            {{ form.observaciones|add_class:"text" }}
+            {{ form.observaciones|add_class:"text"|attr:"rows:5" }}
         </p>
         
         {{ form.estado.as_hidden }}
@@ -46,6 +46,11 @@
     </form>
 
 </div>
+<div class="info_box box_gradient1 cleared" style="width:650px">
+          <h5 class="aviso_icn">Ayuda</h5>
+          <p style="font-size:12px">Prealerta cada vez que realices una compra por Internet y hayas solicitado que sea enviada a tu locker Cittybox. 
+          Esto permitirá mayor agilidad en el control y seguimiento de tus envíos. No olvides ingresar número de guía de la empresa transportadora.. Deseas saber como comprar en Cittybox? entra <a href="">aqu&iacute;</a>. </p>
+    </div>
 <script>
     function add_producto(elem_class){
         $.ajax({
@@ -56,6 +61,35 @@
         });
         
     }
+    error_code = false;
+    $("#prealertar_form").validate({
+     submitHandler: function(form) {
+        if( $("#id_productos option ").length > 0 && !error_code  ){
+            $("#prealertar_form").submit();
+        }else if(error_code){
+            alert("Ya existe un envio con este numero de guia.")
+        }else{
+            alert("Debe agregar al menos un producto.");    
+        }
+     }
+    });
+
+    $("#id_guia").blur(function(){
+       
+       $.ajax({
+           url: "{% url validate_code %}",
+           data: "code="+$(this).val(),
+           success:function(data){
+               if(data == "ERROR"){
+                   error_code = true;
+               }else{
+                   error_code = false;
+               }
+           }
+
+       })
+        
+    });
 
     function add_product(elem){
         link_btn = $(elem);
@@ -77,9 +111,10 @@
                 new_tr = link_btn.parents('tr').replaceWith(data);
                 if ( !editing ){
                     pro_id = $('#products_list input.product_id').last().val();
-                    $("#id_productos").append("<option selected='selected' value='"+pro_id+"'>Producto</option>")
+                    $("#id_productos").append("<option selected='selected' value='"+pro_id+"'>Producto</option>");
+                    $.fn.colorbox.resize();
                 }
-                $.fn.colorbox.resize();
+                
             }
         });
 

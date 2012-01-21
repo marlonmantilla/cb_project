@@ -2,7 +2,7 @@ import os
 
 abspath = lambda *p: os.path.abspath(os.path.join(*p))
 PROJECT_ROOT = abspath(os.path.dirname(__file__))
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -97,7 +97,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'userena.middleware.UserenaLocaleMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
+
+INTERNAL_IPS = ('127.0.0.1',)
+
 TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
     "django.core.context_processors.debug",
@@ -141,6 +145,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'widget_tweaks',
     'django_extensions',
+
 )
 
 # Userena settings

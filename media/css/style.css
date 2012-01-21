@@ -664,6 +664,7 @@ table tr.odd{
     padding: 13px;
 
 }
+.observaciones_area{height: 60px; }
 form .info_box{
     position: absolute;
     right: 0;

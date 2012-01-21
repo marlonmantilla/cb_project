@@ -30,13 +30,13 @@
 									</div>
 
 									<div class="oferta_right">
-										<h2><a target="_blank" href="{{ main_offer.url }}">{{ main_offer.titulo }}</a></h2>
+										<h2><a target="_blank" href="#">{{ main_offer.titulo }}</a></h2>
 										<span class="price">${{ main_offer.precio }}</span> 
 										{% if main_offer.precio_anterior %}
 											<span class="old_price">{{ main_offer.precio_anterior }}</span>
 										{% endif %}
 										<p>{{ main_offer.descripcion }}</p>
-										<p><a target="_blank" href="{{ main_offer.url }}" class="btn set2">Comprar</a></p>
+										<p><a href="{% url shop_offer main_offer.id %}" class="btn set2 shop_colorbox">Comprar</a></p>
 									</div>
 
 								</div><!-- END oferta_del_dia_cont-->

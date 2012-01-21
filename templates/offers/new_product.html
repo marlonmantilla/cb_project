@@ -5,14 +5,18 @@
     	{% if product_id %}
     		<input type="hidden" name="product_id" class="product_id" value="{{ product_id }}"  />
     	{% endif %}
-    	{{ form.nombre|add_class:"text" }}
+    	{{ form.nombre|add_class:"text required" }}
     </td>
     <td>
-    	{{ form.cantidad|add_class:"text tiny" }}
+    	{{ form.cantidad|add_class:"text tiny number" }}
     </td>
     <td>
     	{{ form.valor|add_class:"text tiny" }}
-    	<a href="javascript://" onclick="add_product(this)">Guardar</a>
+    	<a href="javascript://" onclick="add_product(this)" class="save_prod_btn">Guardar</a>
     </td>
-    <td><a href="javascript://" class="delete_icn">Eliminar</a></td>
+    <td>
+        {% if product_id %}
+            <a href="javascript://" onclick="remove_product(this, {{ product_id }})" class="delete_icn">Eliminar</a>
+        {% endif %}
+    </td>
 </tr>

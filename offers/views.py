@@ -17,6 +17,16 @@ def index(request):
 	return render_to_response('offers/index.html', {'main_offer':oferta_del_dia, 
 	'categorias': categorias, }, context_instance=RequestContext(request)) 
 
+def delete_product(request):
+	if request.POST:
+		product_id = request.POST["product_id"]
+		Producto.objects.get(pk=product_id).delete()
+		return HttpResponse("OK")
+
+def shop(request, id_offer):
+	offer = Oferta.objects.get(pk=id_offer)
+	return render_to_response('offers/shop.html', {'offer':offer}, context_instance=RequestContext(request)) 
+
 def show(request, store, offer_id):
 	try:
 		offer = Oferta.objects.get(pk=offer_id, activa=True)
@@ -34,7 +44,6 @@ def new_product(request):
 
 		if 'product_id' in request.POST:
 			id = request.POST['product_id']
-			print id
 			producto = Producto.objects.get(pk=id)
 			form = ProductForm(request.POST, instance=producto)
 		else:
