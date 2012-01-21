@@ -21,6 +21,8 @@ class Envio(models.Model):
 	estado = models.IntegerField(default=0, blank=True, null=True)
 	usuario = models.ForeignKey(Profile, blank=True, null=True)
 	oferta = models.ForeignKey(Oferta, blank=True, null=True)
+	RESPONSABLE = {'cittybox':"Por Cittybox", 'usuario':"Por usuario"}
+	comprado = models.CharField(_("Comprado por"), blank=True, null=True, default = ,max_length=255)	
 	ESTADOS = {'recibido':1, 'no_recibido':0}
 	
 	def __unicode__(self):
