@@ -24,7 +24,8 @@ class Envio(models.Model):
 	RESPONSABLE = {'cittybox':"Por Cittybox", 'usuario':"Por usuario"}
 	comprado = models.CharField(_("Comprado por"), blank=True, null=True, default = RESPONSABLE['usuario'],max_length=255)	
 	ESTADOS = {'recibido':1, 'no_recibido':0}
-	
+	fecha_creacion = models.DateTimeField(_("Fecha de creacion"),auto_now_add=True, blank=True, null = True) 
+
 	def __unicode__(self):
 		return self.guia
 
