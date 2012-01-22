@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/style.css" />
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/colorbox/colorbox.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/tipsy.css" />
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
     <script type="text/javascript">var switchTo5x=false;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'3dbe320c-cc16-4fc0-8c08-2f8fcbadff70'});</script>
   </head>
@@ -150,6 +151,7 @@
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jcarousel.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.validate.min.js"></script>
         <script src="{{ MEDIA_URL }}js/colorbox/jquery.colorbox-min.js"></script>
+        <script src="{{ MEDIA_URL }}js/jquery.tipsy.js"></script>
         <!--[if lt IE 7 ]>
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
   <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
@@ -162,6 +164,7 @@
         
                 {% endblock %}
                 
+                $('.tooltip_plugin').tipsy({gravity: 's'});
                 $(".colorbox").colorbox({transition:"none"});
                 $(".prealert_btn").colorbox({transition:"none"});
                 $(".shop_colorbox").colorbox({transition:"none"});

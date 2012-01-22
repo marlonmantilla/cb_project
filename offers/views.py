@@ -14,8 +14,10 @@ OFFERS_PER_PAGE = 12
 def index(request):
 	oferta_del_dia = get_object_or_404(Oferta, oferta_del_dia=True)
 	categorias = Categoria.objects.all().order_by('nombre')
+	prealertados = Envio.objects.filter(oferta=oferta_del_dia).count
+	favoritas = Favoritas.objects.filter(oferta=oferta_del_dia).count
 	return render_to_response('offers/index.html', {'main_offer':oferta_del_dia, 
-	'categorias': categorias, }, context_instance=RequestContext(request)) 
+	'categorias': categorias,'prealertados':prealertados, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
 
 def delete_product(request):
 	if request.POST:
@@ -33,7 +35,7 @@ def show(request, store, offer_id):
 		tienda = Tienda.objects.get(nombre__iexact=store)
 	except ObjectDoesNotExist:
 		raise Http404
-	prealertados = Envio.objects.filter(estado=Envio.ESTADOS['recibido']).count
+	prealertados = Envio.objects.filter(oferta=offer).count
 	favoritas = Favoritas.objects.filter(oferta=offer).count
 	categorias = Categoria.objects.all().order_by('nombre')
 

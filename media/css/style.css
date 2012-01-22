@@ -937,6 +937,9 @@ form .info_box{
 .oferta_del_dia_cont h5{
 
 }
+.oferta_right .share_links{
+    float:right;
+}
 .oferta_del_dia_cont h2{
     font-size: 24px;
     margin-bottom: 5px;
@@ -994,6 +997,24 @@ form .info_box{
     display: block;
     font-size: 14px;
     font-weight: bold;
+}
+.stats{
+    background: none repeat scroll 0 0 #DAE9F2;
+    color: #416CA7;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 0 1px;
+    overflow: hidden;
+    position: relative;
+}
+.stats span{
+    background: none repeat scroll 0 0 #416CA7;
+    color: #FFFFFF;
+    float: left;
+    font-size: 14px;
+    margin-right: 5px;
+    padding: 1px 7px;
 }
 .features_set1{
     margin: 0;

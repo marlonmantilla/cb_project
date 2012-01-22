@@ -24,8 +24,6 @@ def offers_list(context, store=None):
 	
 	if store != None:
 		offers_list = Oferta.objects.exclude(oferta_del_dia=True).filter(tienda=store).order_by('-fecha_creacion','titulo')
-		print "entro"
-		print offers_list
 	else:
 		offers_list = Oferta.objects.exclude(oferta_del_dia=True).order_by('-fecha_creacion','titulo')
 	paginator = Paginator(offers_list,OFFERS_PER_PAGE)

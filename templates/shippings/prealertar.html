@@ -9,7 +9,7 @@
         {{ form.errors }}
         <p class="inlined wset1">
             <label>No. de Guia</label>
-            {{ form.guia|add_class:"text required" }}
+            {{ form.guia|add_class:"text required tooltip_plugin"|attr:"title='Ingrese el No. de guia proporcionado al momento de comprar el producto'" }}
         </p>
 
         <p class="inlined wset1">
@@ -52,6 +52,9 @@
           Esto permitirá mayor agilidad en el control y seguimiento de tus envíos. No olvides ingresar número de guía de la empresa transportadora.. Deseas saber como comprar en Cittybox? entra <a href="">aqu&iacute;</a>. </p>
     </div>
 <script>
+    
+    $('.tooltip_plugin').tipsy({gravity: 's',trigger: 'focus'});
+
     function add_producto(elem_class){
         $.ajax({
            url: "{% url new_product %}",

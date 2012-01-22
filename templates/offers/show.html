@@ -19,9 +19,9 @@
 
 										<div class="slider_ofertas">
 											<img src="{{MEDIA_URL}}{{ main_offer.imagen }}" width="287" />
-											<h4>Prealertados {{ prealertados }}</h4>
-											<h4>{{ favoritas }} persona{{ favoritas|pluralize }} ha{{ favoritas|pluralize:"n" }} agregado a favoritas.</h4>
-											<h4>Dile a un amigo</h4>
+											<h4 class="stats"><span>{{ prealertados }}</span> persona{{ prealertados|pluralize }} ha{{ prealertados|pluralize:"n" }} prealertado</h4>
+											<h4 class="stats"><span>{{ favoritas }}</span> persona{{ favoritas|pluralize }} ha{{ favoritas|pluralize:"n" }} agregado a favoritas</h4>
+											<h4 style="color: rgb(65, 108, 167); font-size: 15px; margin: 15px 0pt 5px;">Dile a un amigo:</h4>
 											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_twitter_vcount' ></span>
 											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_facebook_vcount' ></span>
 										</div>
@@ -31,12 +31,14 @@
 									</div>
 
 									<div class="oferta_right">
-										<h2><a target="_blank" href="#">{{ main_offer.titulo }}</a></h2>
+										<h2><a class="shop_colorbox" href="{% url shop_offer main_offer.id %}">{{ main_offer.titulo }}</a></h2>
+										
 										<span class="price">${{ main_offer.precio }}</span> 
 										{% if main_offer.precio_anterior %}
 											<span class="old_price">{{ main_offer.precio_anterior }}</span>
 										{% endif %}
 										<p>{{ main_offer.descripcion }}</p>
+
 										<p><a href="{% url shop_offer main_offer.id %}" class="btn set2 shop_colorbox">Comprar</a></p>
 									</div>
 
