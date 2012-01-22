@@ -6,10 +6,7 @@ from offers.models import Oferta
 from django.http import HttpResponse
 from django.utils import simplejson
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.mail import EmailMultiAlternatives, EmailMessage
-from django.template.loader import get_template
-from django.template import Context
-from settings import MEDIA_URL
+from email_notifications import *
 
 SHIPPINS_PER_PAGE = 2
 
@@ -68,13 +65,7 @@ def prealertar(request):
 				envio.productos.add(producto)
 				
 			envio.save()
-			htmly     = get_template('emails/test.html')
-			d = Context({ 'user': request.user, 'MEDIA_URL': MEDIA_URL, 'envio': envio })
-			html_content = htmly.render(d)
-			subject, from_email, to = 'Paquete prealertado en Cittybox', 'no-reply@cittybox.com', request.user.email
-			msg = EmailMessage(subject, html_content, from_email, [to])
-			msg.content_subtype = "html"
-			msg.send()
+			send_prealert_notification(request, envio)
 			return redirect("/accounts/%s" % request.user)
 	else:
 		form = PrealertForm()

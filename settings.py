@@ -145,7 +145,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'widget_tweaks',
     'django_extensions',
-
+    
 )
 
 # Userena settings
