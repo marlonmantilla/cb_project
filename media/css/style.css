@@ -532,6 +532,14 @@ table tr.odd{
     text-indent: -4000px;
     width: 16px;
 }
+.en_locker{
+    background: url("../img/icn/en_locker.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 14px;
+    margin: auto;
+    text-indent: -4000px;
+    width: 16px;
+}
 .nomargin{margin: 0 !important;}
 .font11px{font-size: 11px !important;}
 .overlay_box{
@@ -638,7 +646,8 @@ table tr.odd{
     margin: auto auto 15px;
     overflow: hidden;
     padding-top: 8px;
-    width: 127px;
+    text-align: center;
+    width: 54%;
 }
 .pagination a{
     background: url("../img/gray_ball.png") no-repeat scroll 0 0 transparent;

@@ -16,6 +16,7 @@ def index(request):
 	categorias = Categoria.objects.all().order_by('nombre')
 	prealertados = Envio.objects.filter(oferta=oferta_del_dia).count
 	favoritas = Favoritas.objects.filter(oferta=oferta_del_dia).count
+	
 	return render_to_response('offers/index.html', {'main_offer':oferta_del_dia, 
 	'categorias': categorias,'prealertados':prealertados, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
 
@@ -38,8 +39,9 @@ def show(request, store, offer_id):
 	prealertados = Envio.objects.filter(oferta=offer).count
 	favoritas = Favoritas.objects.filter(oferta=offer).count
 	categorias = Categoria.objects.all().order_by('nombre')
+	en_envio = Envio.objects.filter(oferta=offer, usuario=request.user.get_profile(), estado=Envio.ESTADOS['no_recibido'])
 
-	return render_to_response('offers/show.html', {'main_offer':offer, 
+	return render_to_response('offers/show.html', {'en_envio':en_envio,'main_offer':offer, 
 	'prealertados': prealertados,'categorias': categorias, 'tienda':tienda, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
 
 def new_product(request):

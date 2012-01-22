@@ -10,10 +10,10 @@
                               
 {% for shipping in shippings.object_list %}
 <tr class="{% cycle 'odd' 'even' %}">
-    <td><a href="">{{ shipping.guia }}</a></td>
+    <td><a href="javascript://" {% if not shipping.guia  %}title="Esta siendo tramitado por Cittybox..."{% endif %} class="tooltip_plugin">{% if shipping.guia  %}{{ shipping.guia }}{% else %}En espera{% endif %}</a></td>
     <td>
         <div style="position: relative;">
-            <a class="tooltip_trigger tooltip_1" href="javascript://">{% for producto in shipping.productos.all|slice:":3" %}
+            <a class="tooltip_trigger tooltip_1" {% if shipping.oferta  %}href="{% url show_offer shipping.oferta.tienda.nombre|slugify,shipping.oferta.id %}"{% endif %}>{% for producto in shipping.productos.all|slice:":3" %}
             {{ producto }}
             {% endfor %}
             </a>
@@ -28,9 +28,9 @@
             </div><!-- END tooltip -->
         </div>
     </td>
-    <td>{{ shipping.transportadora }}</td>
+    <td><a href="javascript://" {% if not shipping.guia  %}title="Esta siendo tramitado por Cittybox..."{% endif %} class="tooltip_plugin">{% if shipping.guia  %}{{ shipping.transportadora }}{% else %}En espera{% endif %}</a></td>
     
-    <td><a class="{% if shipping.estado == 1 %}check_icn{% else %}warning_icn{% endif %}" href="#"></a></td>
+    <td><a title="{% if shipping.estado == 1 %}Paquete recibido{% endif %}{% if shipping.estado == 2 %}En tu Locker{% endif %}{% if shipping.estado == 0 %}Paquete en espera{% endif %}" class="{% if shipping.estado == 1 %}check_icn{% endif %}{% if shipping.estado == 2 %}en_locker{% endif %}{% if shipping.estado == 0 %}warning_icn{% endif %} tooltip_plugin" href="javascript://"></a></td>
 </tr>
 {% endfor %}
 </tbody></table>

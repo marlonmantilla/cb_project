@@ -38,8 +38,11 @@
 											<span class="old_price">{{ main_offer.precio_anterior }}</span>
 										{% endif %}
 										<p>{{ main_offer.descripcion }}</p>
-
-										<p><a href="{% url shop_offer main_offer.id %}" class="btn set2 shop_colorbox">Comprar</a></p>
+										{% if en_envio %}
+											<a title="Usted ya ha prealertado esta oferta" href="{% url userena_profile_detail request.user %}" class="btn set1 tooltip_plugin">En envio</a>
+										{% else %}
+											<p><a href="{% url shop_offer main_offer.id %}" class="btn set2 shop_colorbox">Comprar</a></p>
+										{% endif %}
 									</div>
 
 								</div><!-- END oferta_del_dia_cont-->

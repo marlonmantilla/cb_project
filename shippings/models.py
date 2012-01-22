@@ -23,7 +23,7 @@ class Envio(models.Model):
 	oferta = models.ForeignKey(Oferta, blank=True, null=True)
 	RESPONSABLE = {'cittybox':"Por Cittybox", 'usuario':"Por usuario"}
 	comprado = models.CharField(_("Comprado por"), blank=True, null=True, default = RESPONSABLE['usuario'],max_length=255)	
-	ESTADOS = {'recibido':1, 'no_recibido':0}
+	ESTADOS = {'recibido':1, 'no_recibido':0, 'en_locker': 2}
 	fecha_creacion = models.DateTimeField(_("Fecha de creacion"),auto_now_add=True, blank=True, null=True) 
 
 	def __unicode__(self):
@@ -32,8 +32,10 @@ class Envio(models.Model):
 	def estado_str(self):
 		if self.estado == Envio.ESTADOS['no_recibido']:
 			return '<span style="color:red;">Por Recibir</span>'
+		elif self.estado == Envio.ESTADOS['en_locker']:
+			return '<span style="color:blue;">En bodega</span>'
 		else:
-			return '<span style="color:green;">Recibido</span>'
+			return '<span style="color:green;">Recibido</span>' 
 	estado_str.allow_tags = True
 	estado_str.short_description = "Estado"
 		
