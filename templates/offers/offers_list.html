@@ -21,12 +21,13 @@
 	<li class="box_gradient1 main">
 		<div class="top_links clearfix">
             
+            {% if request.user.is_autheticated %}
 			<ul class="horz tl_l">
                 <li>
                 {% is_favorite offer %}
                 </li>
             </ul>
-
+            {% endif %}
 			<div class="share_actions tl_r">
 				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer offer.tienda.nombre|slugify,offer.id %}" class='st_twitter' ></span></li><li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com/{% url show_offer offer.tienda.nombre|slugify,offer.id %}"></span></li></ul>
 			</div>

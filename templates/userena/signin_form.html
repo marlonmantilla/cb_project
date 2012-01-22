@@ -21,34 +21,6 @@
 	</p>
 </form>
 
-<script type="text/javascript">
-	
-	function login(elem){
-		form = $(elem);
-		url = form.attr("action");
-		
-		$.ajax({
-			url: url,
-			type: "POST",
-			data: form.serialize(),
-			success: function(data){
-				if( data.status == 200 ){
-					document.location = "{% url home %}"
-				}else{
-					form.find(".error_message").html(data.message).show();
-				}
-			}
-		});
 
-	}
-
-	$("#signin_form").validate({
-	 submitHandler: function(form) {
-	   login(form);
-	   return false;
-	 }
-	});
-
-</script>
 
 		

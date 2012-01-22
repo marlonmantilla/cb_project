@@ -16,9 +16,14 @@
 			{% if offer.precio_anterior %}
 				<span class="old_price">{{ offer.precio_anterior }}</span>
 			{% endif %}
-			
+			{% if request.user.is_authenticated %}
 			<p><a target="_blank" href="{{ offer.url }}" class="btn set2">Comprar en {{ offer.tienda }}</a></p>
 			<p><a href="javascript://" onclick="lightbox();" class="btn set2">Compramos por ti</a></p>
+			{% else %}
+			<p>Debes estar registrado para traer tus pedidos con Cittybox</p>
+			<a href="{% url userena_signup %}" class="btn set1">Registrarme</a>
+			
+			{% endif %}
 		</div>
 
 		

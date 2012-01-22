@@ -34,10 +34,11 @@ def show(request, store, offer_id):
 	except ObjectDoesNotExist:
 		raise Http404
 	prealertados = Envio.objects.filter(estado=Envio.ESTADOS['recibido']).count
+	favoritas = Favoritas.objects.filter(oferta=offer).count
 	categorias = Categoria.objects.all().order_by('nombre')
 
 	return render_to_response('offers/show.html', {'main_offer':offer, 
-	'prealertados': prealertados,'categorias': categorias, 'tienda':tienda }, context_instance=RequestContext(request)) 
+	'prealertados': prealertados,'categorias': categorias, 'tienda':tienda, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
 
 def new_product(request):
 	if request.method == "POST":

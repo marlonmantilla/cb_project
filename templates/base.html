@@ -162,6 +162,7 @@
         
                 {% endblock %}
                 
+                $(".colorbox").colorbox({transition:"none"});
                 $(".prealert_btn").colorbox({transition:"none"});
                 $(".shop_colorbox").colorbox({transition:"none"});
                 
@@ -178,13 +179,39 @@
                   }
                 });
 
+                function login(elem){
+                  form = $(elem);
+                  url = form.attr("action");
+                  
+                  $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: form.serialize(),
+                    success: function(data){
+                      if( data.status == 200 ){
+                        document.location = "{% url home %}"
+                      }else{
+                        form.find(".error_message").html(data.message).show();
+                      }
+                    }
+                  });
+
+                }
+
+                {% if not user.is_authenticated %}
                     $.ajax("{% url userena_signin %}",{
                        method: 'GET',
                        success: function(data){
                          $(".login_box").find('div').html(data);
+                         $("#signin_form").validate({
+                           submitHandler: function(form) {
+                             login(form);
+                             return false;
+                           }
+                          });
                        }
                     });
-
+                {% endif %}
                 $(".login_btn").click(function(){
                     $(".login_box").toggle();
                     return false;
