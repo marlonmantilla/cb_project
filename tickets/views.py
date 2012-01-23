@@ -15,10 +15,11 @@ def add(request):
 	if request.method == 'POST':
 		form = TicketForm(request.POST)
 		if form.is_valid():
-			form.save(commit=False)
+			ticket = form.save(commit=False)
 			if request.user.is_authenticated():
-				form.usuario = request.user.get_profile()
-			form.save()
+				ticket.usuario = request.user.get_profile()
+				
+			ticket.save()
 			messages.add_message(request, messages.INFO, 'Su pregunta ha sido enviada correctamente.')
 	else:
 		form = TicketForm()
