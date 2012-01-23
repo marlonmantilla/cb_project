@@ -39,7 +39,7 @@ def show(request, store, offer_id):
 	prealertados = Envio.objects.filter(oferta=offer).count
 	favoritas = Favoritas.objects.filter(oferta=offer).count
 	categorias = Categoria.objects.all().order_by('nombre')
-	if request.user.is_authenticated:
+	if not request.user.is_anonymous:
 		en_envio = Envio.objects.filter(oferta=offer, usuario=request.user.get_profile(), estado=Envio.ESTADOS['no_recibido'])
 
 	return render_to_response('offers/show.html', {'en_envio':en_envio,'main_offer':offer, 
