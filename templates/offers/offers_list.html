@@ -29,7 +29,7 @@
             </ul>
             {% endif %}
 			<div class="share_actions tl_r">
-				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer offer.tienda.nombre|slugify,offer.id %}" class='st_twitter' ></span></li><li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com/{% url show_offer offer.tienda.nombre|slugify,offer.id %}"></span></li></ul>
+				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer offer.tienda.nombre|slugify,offer.id %}" class='st_twitter' ></span></li><li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com{% url show_offer offer.tienda.nombre|slugify,offer.id %}"></span></li></ul>
 			</div>
 		</div><!-- End top_links -->
 

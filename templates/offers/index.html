@@ -38,8 +38,8 @@
 										{% endif %}
 										<p>{{ main_offer.descripcion|truncatewords:40 }}</p>
 										<p>
-											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_twitter_hcount' ></span>
-											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com/{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_facebook_hcount' ></span>
+											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_twitter_hcount' ></span>
+											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_facebook_hcount' ></span>
 											
 										</p>
 										<p><a href="{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class="btn set2">Ver oferta</a></p>

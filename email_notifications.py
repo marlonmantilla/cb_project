@@ -5,6 +5,13 @@ from settings import MEDIA_URL
 
 CITTYBOX_ADMINS = ['admin@cittybox.com','marlon.mantilla@hotmail.com']
 
+def send_status_notification(envio):
+	htmly = get_template('emails/status_change.html')
+	d = Context({ 'user': envio.usuario.user, 'MEDIA_URL': MEDIA_URL, 'envio': envio })
+	html_content = htmly.render(d)
+	subject, from_email, to = 'Notificacion de paquete', 'no-reply@cittybox.com', envio.usuario.user.email
+	send_email_notification(subject, html_content, from_email, [to])
+	
 def send_prealert_notification(request, envio):
 	htmly = get_template('emails/prealert_notification.html')
 	d = Context({ 'user': request.user, 'MEDIA_URL': MEDIA_URL, 'envio': envio })

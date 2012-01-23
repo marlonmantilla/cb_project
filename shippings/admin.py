@@ -13,11 +13,13 @@ class EnvioAdmin(admin.ModelAdmin):
 	
   def received(self, request, queryset):
 	envios = queryset.update(estado=Envio.ESTADOS['recibido'])
+	for envio in queryset:
+		send_status_notification(envio)
 	if envios == 1:
 		self.message_user(request, "%s marcado como recibido" % 1)
 	else:
 		self.message_user(request, "%s marcados como recibido" % envios)
-  received.short_description = 'Marcar como recibido(s).'
+  received.short_description = 'Recibido(s).'
 	
   def no_recibido(self, request, queryset):
 	envios = queryset.update(estado=Envio.ESTADOS['no_recibido'])
@@ -25,15 +27,17 @@ class EnvioAdmin(admin.ModelAdmin):
 		self.message_user(request, "%s marcado como NO recibido" % 1)
 	else:
 		self.message_user(request, "%s marcados como NO recibido" % envios)
-  no_recibido.short_description = 'Marcar como NO recibido(s).'
+  no_recibido.short_description = 'NO recibido(s).'
 
   def en_bodega(self, request, queryset):
 	envios = queryset.update(estado=Envio.ESTADOS['en_locker'])
+	for envio in queryset:
+		send_status_notification(envio)
 	if envios == 1:
 		self.message_user(request, "%s marcado en bodega" % 1)
 	else:
 		self.message_user(request, "%s marcados en bodega" % envios)
-  en_bodega.short_description = 'Marcar como paquete(s) en bodega.'
+  en_bodega.short_description = 'En bodega.'
 
 
 

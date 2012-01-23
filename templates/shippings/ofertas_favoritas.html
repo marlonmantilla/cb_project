@@ -9,10 +9,15 @@
 {% for offer in offers %}
 
 <tr>
-    <td><a href="">{{ offer.oferta.titulo }}</a></td>
+    <td><a href="{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}">{{ offer.oferta.titulo }}</a></td>
     <td>{{ offer.oferta.categoria }} </td>
-    <td></td>
-    <td><a href="#">Prealertar</a></td>
+    <td>
+    <ul class="horz">
+    	<li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}" class='st_twitter' ></span></li>
+    	<li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}"></span></li>
+    	</ul>
+    </td>
+    <td><a href="{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}">Comprar</a></td>
 </tr>
 {% endfor %}
 
