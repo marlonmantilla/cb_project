@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load offers_extras %}
+
+{% block content %}
+	
+	<div class="page_content clearfix">
+
+					<div class="left">
+
+						<div class="box box_sep">
+							<div class="main_icon locker">
+								<h1>Ayuda</h1>
+								<p>Si tienes una duda chequea nuestras preguntas frecuentes. Necesitas ayuda personalizada? <a href="">Envia una pregunta</a></p>
+							</div>
+							
+							<div id="accordion">
+								<div>
+									<h3><a href="#">Por qu&eacute; comprar en Cittybox?</a></h3>
+									<div>
+										En Cittybox pordr&aacute;s traer tus paquetes en menos de 5 d&iacute;as
+									</div>
+								</div>
+								<div>
+									<h3><a href="#">Qu&eacute; obtengo cuando soy ciudadano de Cittybox?</a></h3>
+									<div>Obtienes una dirección de correspondencia en los Estados Unidos. Una dirección física donde todas tus compras hechas por Internet serán recibidas y enviadas a tu casa u oficina. Tus compras pueden ser enviadas diariamente o, si prefieres, pueden consolidarse en un sólo envío</div>
+								</div>
+								<div>
+									<h3><a href="#">Qu&eacute; beneficio tiene ser parte de Cittybox? </a></h3>
+									<div>Por medio Cittybox podrás comprar por Internet en cualquier lugar del mundo y recibir tus paquetes en Colombia. La mayoría de tiendas virtuales en Estados Unidos no realizan envíos hacia Latinoamérica y, en otros casos, los costos son muy altos. Con Cittybox podrás comprar con excelentes precios en las tienda virtuales y tener tus envío rápido y seguro en Colombia.</div>
+								</div>
+								<div>
+									<h3><a href="#">Qu&eacute; direcci&oacute;n debo colocar al momento de realizar mi compra</a></h3>
+									<div>Dirección en Miami es: <b>2250 NW 114th Ave.COL 5242
+Miami, FL 33172 </b></div>
+								</div>
+								<div>
+									<h3><a href="#">Cu&aacute;nto demora en llegar mi paquete?</a></h3>
+									<div>Una vez el envío llegue a Miami y/o Madrid y autorices el despachado desde la página web, el plazo de entrega en destino será de 4 a 5 días hábiles, el cual puede variar dependiendo de la forma en cómo hagas el despacho o consolidse los paquetes. De igual manera estamos sujetos a restricciones y procesos en aeropuertos.</b></div>
+								</div>
+								<div>
+									<h3><a href="#">Por qu&eacute; debo prealertar mis envios?</a></h3>
+									<div>La Prealerta nos permite estar preparados para recibir tu compra y tener mayor agilidad en el manejo del paquete. Realízala a través de tu cuenta Cittybox en tu locker. Recuerda ingresar la descripción detallada de los artículos, valor declarado, nombre de la empresa transportadora y número de guía del envío.</div>
+								</div>
+								<div>
+									<h3><a href="#">¿CÓMO PUEDO CALCULAR LOS IMPUESTOS DE NACIONALIZACIÓN?</a></h3>
+									<div>Los impuestos dependen de cada país de destino: En el caso de Colombia es el 16% de IVA y el 10% de arancel.
+El Arancel es el impuesto de entrada de la mercancía al país y equivale al 10% del valor CIF. El IVA corresponde al 16% sobre la suma del valor CIF sumado al arancel calculado.
+Es importante que al declarar tus envíos, tengas en cuenta que el valor mínimo por artículo declarado es de USD$ 1, y el valor total mínimo declarado por envío debe ser desde USD$5 hasta USD$2.000.
+Si deseas conocer el valor aproximado de su envío, favor diríjase a la Calculadora de costos.</div>
+								</div>
+								<div>
+									<h3><a href="#">¿TODOS LOS ENVÍOS QUE YO REALICE PAGAN ARANCEL E IVA?</a></h3>
+									<div>No, los documentos no pagan impuestos ni arancel. Adicionalmente, algunos artículos tienen beneficios arancelarios y pagan un valor menor al habitual. Si un productoque vas a enviar tiene una posición arancelaria diferente favor dirígete a la pregunta número 10.</div>
+								</div>
+								<div>
+									<h3><a href="#">¿TODOS LOS ENVÍOS QUE YO REALICE PAGAN ARANCEL E IVA?</a></h3>
+									<div>No, los documentos no pagan impuestos ni arancel. Adicionalmente, algunos artículos tienen beneficios arancelarios y pagan un valor menor al habitual. Si un productoque vas a enviar tiene una posición arancelaria diferente favor dirígete a la pregunta número 10.</div>
+								</div>
+							</div>
+							
+						</div>
+
+
+						
+					</div><!-- END left -->
+
+					{% include 'shared/sidebar.html' %}
+
+					
+		</div>
+					
+	
+{% endblock %}
+
+{% block javascript_extra %}
+	$("#accordion").accordion({ header: "h3" });
+{% endblock %}
