@@ -6,7 +6,7 @@
         <table cellpadding="15">
             <tr>
                 <td>
-                    <a href="http://cittybox.com"><img border="0" src="http://localhost:8000{{ MEDIA_URL }}img/emails/logo.jpg" alt="Cittybox" /></a>
+                    <a href="http://cittybox.com"><img border="0" src="http://cittybox.com{{ MEDIA_URL }}img/emails/logo.jpg" alt="Cittybox" /></a>
                 </td>
                 <td>
                     <h1 style="font-size: 16px;color: #378DA7;margin: 0 0 5px 0;font-family: georgia;">Hola {{ user }},</h1>
@@ -31,13 +31,13 @@
                         </tr>
                         {% for producto in envio.productos.all %}
                             <tr {% cycle "" "style='background:#F7F7F7;'"%}>
-                                <td style="padding:10px;border: 1px solid #EBEBEB;"><a href="http://localhost:8000{% url userena_profile_detail user %}" style="color:#1F638D;">{{ producto.nombre }} </a></td> 
+                                <td style="padding:10px;border: 1px solid #EBEBEB;"><a href="http://cittybox.com{% url userena_profile_detail user %}" style="color:#1F638D;">{{ producto.nombre }} </a></td> 
                                 <td style="padding:10px;border: 1px solid #EBEBEB;">{{ producto.valor }}</td>
                             </tr>
                         {% endfor %}
                         </table>
                         <br />
-                        <a href="http://localhost:8000{% url userena_profile_detail user %}" style="display: block; font-size: 17px; width: 127px; text-align: center; padding: 7px; background: none repeat scroll 0% 0% rgb(31, 99, 141); color: rgb(255, 255, 255); font-weight: bold; text-decoration: none; margin: auto;">Ir a mi Locker </a><br />
+                        <a href="http://cittybox.com{% url userena_profile_detail user %}" style="display: block; font-size: 17px; width: 127px; text-align: center; padding: 7px; background: none repeat scroll 0% 0% rgb(31, 99, 141); color: rgb(255, 255, 255); font-weight: bold; text-decoration: none; margin: auto;">Ir a mi Locker </a><br />
                     </div>
                     <div style="font-size: 12px;color: #666666;margin: 0 0 5px 0;">
                         Gracias por ser parte de Cittybox!
