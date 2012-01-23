@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     url(r'^validate_code/$', 'shippings.views.validate_code', name='validate_code'),
     
     url(r'^ayuda/$', 'tickets.views.index', name='tickets'),
+    url(r'^ayuda/pregunta/$', 'tickets.views.add', name='add_ticket'),
 
 	url(r'^$', 'views.home', name='home'),
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT }),

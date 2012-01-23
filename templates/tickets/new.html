@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load offers_extras %}
+{% load widget_tweaks %}
+
+{% block content %}
+	
+	<div class="page_content clearfix">
+
+					<div class="left">
+
+						<div class="box box_sep">
+							<div>
+								<h1>Ayuda</h1>
+								<p>Envia tu duda, pregunta o sugerencia:</p>
+							</div>
+							
+							{% if messages %}
+								{% for message in messages %}
+							    <div{% if message.tags %} class="{{ message.tags }} success"{% endif %}>{{ message }}</div>
+							    {% endfor %}
+							{% endif %}
+
+							<form id="new_ticket" method="POST" action="{% url add_ticket %}">{% csrf_token %}
+								{{ form.errors }}
+								<p class="inlined wset1">
+						            <label>Nombre:</label>
+						            {{ form.nombre|add_class:"text required" }}
+						        </p>
+						        <p class="inlined wset1">
+						            <label>Email:</label>
+						            {{ form.email|add_class:"text required email" }}
+						        </p>
+						        <p class="inlined wset1">
+						            <label>Tel&eacute;fono:</label>
+						            {{ form.telefono|add_class:"text required" }}
+						        </p>
+						        <p class="inlined wset1">
+						            <label>Tema:</label>
+						            {{ form.subject|add_class:"text required" }}
+						        </p>
+						        <p class="cleared">
+						            <label>Mensaje:</label>
+						            {{ form.mensaje|add_class:"text required" }}
+						        </p>
+								<input class="btn set2" type="submit" value="Enviar" />
+							</form>
+							
+						</div>
+
+						{% offers_carrousel %}
+						
+					</div><!-- END left -->
+
+					{% include 'shared/sidebar.html' %}
+
+					
+		</div>
+			
+	
+{% endblock %}
+
+{% block javascript_extra %}
+	
+	$("#new_ticket").validate({
+		     submitHandler: function(form) {
+		        form.submit();
+		     }
+		    });
+{% endblock %}

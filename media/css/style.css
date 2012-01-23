@@ -360,7 +360,13 @@ label.error{
     font-size: 11px;
     margin-top: 2px;
 }
-
+.success{
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+    color: #4F8A10;
+    margin-bottom: 21px;
+    padding: 10px;
+}
 input.error{ border: 1px solid red !important; }
 .errorlist {
     background: none repeat scroll 0 0 #FEF1EC;

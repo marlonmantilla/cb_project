@@ -16,3 +16,6 @@ class Ticket(models.Model):
     )
 	subject = models.CharField(_("Tema"), max_length=1, choices=SUBJECTS_CHOICES)
 	usuario = models.ForeignKey(Profile, blank=True, null=True)
+
+	def __unicode__(self):
+		return "%s - por %s" % (Ticket.SUBJECTS_CHOICES[int(self.subject)-1][1], self.usuario)
