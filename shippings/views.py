@@ -35,6 +35,7 @@ def autoshop(request, offer_id):
 			envio.productos.add(producto)
 		envio.save()
 		success = True
+		send_prealert_notification(request, envio)
 	
 	return render_to_response('shippings/autoshop.html', locals() , context_instance=RequestContext(request))
 
