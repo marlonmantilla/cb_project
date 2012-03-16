@@ -2,9 +2,10 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template.context import RequestContext
 from offers.models import Oferta, Categoria, Favoritas, Tienda, Producto
 from offers.forms import ProductForm
+from shippings.models import Envio
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.core.exceptions import ObjectDoesNotExist
 import operator
 
@@ -13,15 +14,43 @@ OFFERS_PER_PAGE = 12
 def index(request):
 	oferta_del_dia = get_object_or_404(Oferta, oferta_del_dia=True)
 	categorias = Categoria.objects.all().order_by('nombre')
+	prealertados = Envio.objects.filter(oferta=oferta_del_dia).count
+	favoritas = Favoritas.objects.filter(oferta=oferta_del_dia).count
+	
 	return render_to_response('offers/index.html', {'main_offer':oferta_del_dia, 
-	'categorias': categorias, }, context_instance=RequestContext(request)) 
+	'categorias': categorias,'prealertados':prealertados, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
+
+def delete_product(request):
+	if request.POST:
+		product_id = request.POST["product_id"]
+		Producto.objects.get(pk=product_id).delete()
+		return HttpResponse("OK")
+
+def shop(request, id_offer):
+	offer = Oferta.objects.get(pk=id_offer)
+	return render_to_response('offers/shop.html', {'offer':offer}, context_instance=RequestContext(request)) 
+
+def show(request, store, offer_id):
+	try:
+		offer = Oferta.objects.get(pk=offer_id, activa=True)
+		tienda = Tienda.objects.get(nombre__iexact=store)
+	except ObjectDoesNotExist:
+		raise Http404
+	prealertados = Envio.objects.filter(oferta=offer).count
+	favoritas = Favoritas.objects.filter(oferta=offer).count
+	categorias = Categoria.objects.all().order_by('nombre')
+	en_envio = None
+	if not request.user.is_anonymous and request.user.is_authenticated:
+		en_envio = Envio.objects.filter(oferta=offer, usuario=request.user.get_profile(), estado=Envio.ESTADOS['no_recibido'])
+
+	return render_to_response('offers/show.html', {'en_envio':en_envio,'main_offer':offer, 
+	'prealertados': prealertados,'categorias': categorias, 'tienda':tienda, 'favoritas':favoritas }, context_instance=RequestContext(request)) 
 
 def new_product(request):
 	if request.method == "POST":
 
 		if 'product_id' in request.POST:
 			id = request.POST['product_id']
-			print id
 			producto = Producto.objects.get(pk=id)
 			form = ProductForm(request.POST, instance=producto)
 		else:

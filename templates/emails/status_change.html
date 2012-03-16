@@ -1,0 +1,58 @@
+
+{% include 'emails/email_header.html' %}
+<tr>
+    <td style="border:1px solid #348AA3;border-bottom: none;" bgcolor="#FFFFFF">
+
+        <table cellpadding="15">
+            <tr>
+                <td>
+                    <a href="http://cittybox.com"><img border="0" src="http://cittybox.com{{ MEDIA_URL }}img/emails/logo.jpg" alt="Cittybox" /></a>
+                </td>
+                <td>
+                    <h1 style="font-size: 16px;color: #378DA7;margin: 0 0 5px 0;font-family: georgia;">Hola {{ user }},</h1>
+                    {% if envio.estado == 2 %}
+                        <h2 style="font-size: 13px;color: #666666 !important;margin: 0 0 5px 0;">Tu paquete ha sido entregado en nuestra bodega Cittybox:</h2>
+                    {% endif %}
+                    {% if envio.estado == 1 %}
+                        <h2 style="font-size: 13px;color: #666666 !important;margin: 0 0 5px 0;">Felicidades! Has recibido satisfactoriamente tu paquete:</h2>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="font-size: 12px;color: #666666;margin: 0 0 5px 0;">
+                        No. de guia: <b style="font-size:17px">{{ envio.guia }}</b>
+                        <br /><br />
+                       
+                        <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border: 1px solid #EBEBEB;">
+                        <tr style='background:#F7F7F7;'>
+                            <th style="padding:10px;border: 1px solid #EBEBEB;">Producto</th>
+                            <th style="padding:10px;border: 1px solid #EBEBEB;">Precio</th>
+                        </tr>
+                        {% for producto in envio.productos.all %}
+                            <tr {% cycle "" "style='background:#F7F7F7;'"%}>
+                                <td style="padding:10px;border: 1px solid #EBEBEB;"><a href="http://cittybox.com{% url userena_profile_detail user %}" style="color:#1F638D;">{{ producto.nombre }} </a></td> 
+                                <td style="padding:10px;border: 1px solid #EBEBEB;">{{ producto.valor }}</td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                        <br />
+                        <center><a href="http://cittybox.com{% url userena_profile_detail user %}" style="display: block; font-size: 14px; width: 127px; text-align: center; padding: 7px; background: #1F638D; color: #FFFFFF; font-weight: bold; text-decoration: none; margin: auto;">Ir a mi Locker </a></center><br />
+                    </div>
+                    <div style="font-size: 12px;color: #666666;margin: 0 0 5px 0;">
+                        Gracias por ser parte de Cittybox!
+                        <br/><br/>
+                        <b>Cordialmente,<br/>
+                        Cittybox Team</b>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+
+
+    </td>
+
+    </tr>
+
+{% include 'emails/email_footer.html' %}

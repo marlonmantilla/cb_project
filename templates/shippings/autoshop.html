@@ -1,0 +1,35 @@
+<div class="overlay_box set1" style="width:450px;">
+	
+		
+			{% if success %}
+				<h2>Felicitaciones!</h2>
+				<p>En menos de 24 horas un asesor se contactara con usted para darle los detalles de su compra.</p>
+			{% else %}
+			<div class="main_icon locker">
+		        <h1>En Cittybox compramos por ti</h1>
+		        <p><b>No tienes tarjeta de credito?</b> te parece complicado el comprar por internet?, En Cittybox nos encargamos de tu compra y gesti&oacute;n de tu paquete.</p>
+		    </div>
+		    <br />
+		    <p>Deseas que Cittybox se encargue de tu compra:</p>
+				<form id="autoshop_form" method="POST" action="{% url autoshop offer.id %}">{% csrf_token %}
+				<a href="javascript://" onclick="autoshop($('#autoshop_form'))" class="btn set2">Si</a>
+				<a href="javascript://" onclick="$.fn.colorbox.close();">No</a>
+				</form>
+				
+			{% endif %}
+	
+
+</div>
+
+	<script>
+		function autoshop(form){    
+		  $.ajax({
+		  	url: "{% url autoshop offer.id %}",
+		  	type: "POST",
+		  	data: $(form).serialize(),
+		  	success: function(data){
+		  		$.fn.colorbox({html:data});
+		  	}
+		  });
+		}
+	</script>

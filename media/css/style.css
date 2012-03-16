@@ -49,8 +49,8 @@ body, button, input, select, textarea { font-family: Tahoma, sans-serif; color: 
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
+a { color: #1F638D; }
+a:visited { color: #1F638D; }
 a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
@@ -360,7 +360,13 @@ label.error{
     font-size: 11px;
     margin-top: 2px;
 }
-
+.success{
+    background-color: #DFF2BF;
+    border: 1px solid #4F8A10;
+    color: #4F8A10;
+    margin-bottom: 21px;
+    padding: 10px;
+}
 input.error{ border: 1px solid red !important; }
 .errorlist {
     background: none repeat scroll 0 0 #FEF1EC;
@@ -532,6 +538,14 @@ table tr.odd{
     text-indent: -4000px;
     width: 16px;
 }
+.en_locker{
+    background: url("../img/icn/en_locker.png") no-repeat scroll 0 0 transparent;
+    display: block;
+    height: 14px;
+    margin: auto;
+    text-indent: -4000px;
+    width: 16px;
+}
 .nomargin{margin: 0 !important;}
 .font11px{font-size: 11px !important;}
 .overlay_box{
@@ -606,9 +620,17 @@ table tr.odd{
     font-size: 14px;
     margin: 0;
 }
+.error_message{
+    background: none repeat scroll 0 0 #FEF1EC;
+    color: #CD0A0A;
+    margin-top: 7px;
+    padding: 7px;
+    display:none;
+}
 .login_box form .text{
     font-size: 11px;
     padding: 5px;
+    width: 224px;
 }
 .login_box form label{
     font-size: 11px;
@@ -630,7 +652,8 @@ table tr.odd{
     margin: auto auto 15px;
     overflow: hidden;
     padding-top: 8px;
-    width: 127px;
+    text-align: center;
+    width: 54%;
 }
 .pagination a{
     background: url("../img/gray_ball.png") no-repeat scroll 0 0 transparent;
@@ -656,6 +679,7 @@ table tr.odd{
     padding: 13px;
 
 }
+.observaciones_area{height: 60px; }
 form .info_box{
     position: absolute;
     right: 0;
@@ -928,6 +952,9 @@ form .info_box{
 .oferta_del_dia_cont h5{
 
 }
+.oferta_right .share_links{
+    float:right;
+}
 .oferta_del_dia_cont h2{
     font-size: 24px;
     margin-bottom: 5px;
@@ -985,6 +1012,24 @@ form .info_box{
     display: block;
     font-size: 14px;
     font-weight: bold;
+}
+.stats{
+    background: none repeat scroll 0 0 #DAE9F2;
+    color: #416CA7;
+    font-size: 11px;
+    height: 22px;
+    line-height: 22px;
+    margin: 0 0 1px;
+    overflow: hidden;
+    position: relative;
+}
+.stats span{
+    background: none repeat scroll 0 0 #416CA7;
+    color: #FFFFFF;
+    float: left;
+    font-size: 14px;
+    margin-right: 5px;
+    padding: 1px 7px;
 }
 .features_set1{
     margin: 0;
@@ -1267,7 +1312,7 @@ footer .footer_list{
 }
 footer .footer_links{
     float: left;
-    margin: 0 20px 0 0;
+    margin: 0 41px 0 0;
     padding: 0;
 }
 footer .footer_links li{
@@ -1334,7 +1379,8 @@ footer .footer_links li.main_title{
     outline:none;
 }
 .add_to_favorites:hover,.add_to_favorites.active{
-    background-position: 0 -20px
+    background-position: 0 -20px;
+    outline:none;
 }
 .facebook_share,.twitter_share{
     background: url(../img/icn/shareicns.png) no-repeat;

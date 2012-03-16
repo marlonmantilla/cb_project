@@ -17,7 +17,23 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/style.css" />
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/colorbox/colorbox.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/tipsy.css" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/cupertino/jquery-ui-1.8.17.custom.css" />
     <script src="{{ MEDIA_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+    <script type="text/javascript">var switchTo5x=false;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'3dbe320c-cc16-4fc0-8c08-2f8fcbadff70'});</script>
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-28536552-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
   </head>
   <body>
   <div class="container">
@@ -67,13 +83,13 @@
                         </li>
                         {% else %}
                         <li>
-                          <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" />
-                          <a href="{% url userena_profile_detail user %}">{{ user }}</a>
+                          <!-- <img width="32" src="{{ user.get_profile.get_mugshot_url }}" alt="" /> -->
+                          <a href="{% url userena_profile_detail user %}">Mi Locker</a>
                         </li>
-                        <li><a href="{% url userena_signout %}">Salir</a></li>
+                        <li><a href="{% url logout %}">Salir</a></li>
                         {% endif %}
                         <li><a href="">Contacto</a></li>
-                        <li><a href="">Ayuda</a></li>
+                        <li><a href="{% url tickets %}">Ayuda</a></li>
                     </ul>
                 </nav>
 
@@ -112,7 +128,7 @@
                       <li><a href="">Quienes somos</a></li>
                   </ul>
 
-                  <ul class="footer_links"  style="margin-right: 12px;">
+                  <ul class="footer_links"  style="margin-right: 32px;">
                       <li class="main_title">Ayuda</li>
                       <li><a href="">Que es Cittybox?</a></li>
                       <li><a href="">Como funciona?</a></li>
@@ -149,6 +165,9 @@
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.jcarousel.min.js"></script>
         <script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.validate.min.js"></script>
         <script src="{{ MEDIA_URL }}js/colorbox/jquery.colorbox-min.js"></script>
+        <script src="{{ MEDIA_URL }}js/jquery.tipsy.js"></script>
+        <script src="{{ MEDIA_URL }}js/jquery-ui-1.8.17.custom.min.js"></script>
+        
         <!--[if lt IE 7 ]>
   <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
   <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
@@ -161,9 +180,13 @@
         
                 {% endblock %}
                 
+                $('.tooltip_plugin').tipsy({gravity: 's'});
+                $(".colorbox").colorbox({transition:"none"});
                 $(".prealert_btn").colorbox({transition:"none"});
+                $(".shop_colorbox").colorbox({transition:"none"});
+                
                 $('.slideshow').cycle({
-                    fx: 'scrollUp', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+                    fx: 'scrollLeft', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
                     timeout: 5000,
                     pager:  '#slider_pager'
                 });
@@ -175,17 +198,46 @@
                   }
                 });
 
+                function login(elem){
+                  form = $(elem);
+                  url = form.attr("action");
+                  
+                  $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: form.serialize(),
+                    success: function(data){
+                      if( data.status == 200 ){
+                        document.location = "{% url home %}"
+                      }else{
+                        form.find(".error_message").html(data.message).show();
+                      }
+                    }
+                  });
+
+                }
+
+                {% if not user.is_authenticated %}
                     $.ajax("{% url userena_signin %}",{
                        method: 'GET',
                        success: function(data){
                          $(".login_box").find('div').html(data);
+                         $("#signin_form").validate({
+                           submitHandler: function(form) {
+                             login(form);
+                             return false;
+                           }
+                          });
                        }
                     });
-
+                {% endif %}
                 $(".login_btn").click(function(){
                     $(".login_box").toggle();
                     return false;
                 });
+
+
+            
                 function mycarousel_initCallback(carousel)
                 {
                     // Disable autoscrolling if the user clicks the prev or next button.
@@ -212,7 +264,32 @@
                 });
                 
             });
-        </script>
 
+            function remove_product(elem, product_id){
+                link_btn = $(elem);
+                link_btn.parents("tr").remove();
+                inputs = link_btn.parents('tr').find('input');
+                query_set = "";
+                inputs.each(function(index, elem){
+                    name = $(this).attr('name');
+                    value = $(this).val();
+                    console.log(name)  ;  
+                    query_set+=name+"="+value+"&";
+                });
+                
+                $.ajax({
+                  url: "{% url delete_product %}",
+                  data: query_set,
+                  type: "POST",
+                  success: function(data){$('.selDiv')
+                    $("#id_productos option[value='"+product_id+"']").remove();
+                  }
+                });
+            }
+        </script>
+        <!-- begin olark code --><script type='text/javascript'>/*{literal}<![CDATA[*/window.olark||(function(i){var e=window,h=document,a=e.location.protocol=="https:"?"https:":"http:",g=i.name,b="load";(function(){e[g]=function(){(c.s=c.s||[]).push(arguments)};var c=e[g]._={},f=i.methods.length; while(f--){(function(j){e[g][j]=function(){e[g]("call",j,arguments)}})(i.methods[f])} c.l=i.loader;c.i=arguments.callee;c.f=setTimeout(function(){if(c.f){(new Image).src=a+"//"+c.l.replace(".js",".png")+"&"+escape(e.location.href)}c.f=null},20000);c.p={0:+new Date};c.P=function(j){c.p[j]=new Date-c.p[0]};function d(){c.P(b);e[g](b)}e.addEventListener?e.addEventListener(b,d,false):e.attachEvent("on"+b,d); (function(){function l(j){j="head";return["<",j,"></",j,"><",z,' onl'+'oad="var d=',B,";d.getElementsByTagName('head')[0].",y,"(d.",A,"('script')).",u,"='",a,"//",c.l,"'",'"',"></",z,">"].join("")}var z="body",s=h[z];if(!s){return setTimeout(arguments.callee,100)}c.P(1);var y="appendChild",A="createElement",u="src",r=h[A]("div"),G=r[y](h[A](g)),D=h[A]("iframe"),B="document",C="domain",q;r.style.display="none";s.insertBefore(r,s.firstChild).id=g;D.frameBorder="0";D.id=g+"-loader";if(/MSIE[ ]+6/.test(navigator.userAgent)){D.src="javascript:false"} D.allowTransparency="true";G[y](D);try{D.contentWindow[B].open()}catch(F){i[C]=h[C];q="javascript:var d="+B+".open();d.domain='"+h.domain+"';";D[u]=q+"void(0);"}try{var H=D.contentWindow[B];H.write(l());H.close()}catch(E){D[u]=q+'d.write("'+l().replace(/"/g,String.fromCharCode(92)+'"')+'");d.close();'}c.P(2)})()})()})({loader:(function(a){return "static.olark.com/jsclient/loader0.js?ts="+(a?a[1]:(+new Date))})(document.cookie.match(/olarkld=([0-9]+)/)),name:"olark",methods:["configure","extend","declare","identify"]});
+/* custom configuration goes here (www.olark.com/documentation) */
+olark.identify('7164-234-10-2184');/*]]>{/literal}*/</script>
+<!-- end olark code -->
    </body>
  </html>

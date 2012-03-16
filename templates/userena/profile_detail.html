@@ -15,41 +15,26 @@
 
                         <div class="box box_sep">
                             <div class="main_icon locker">
-                                <h1>Mi Locker</h1>
+                                <h1>Mi Locker</h1> 
                                 <p>Aqui encontraras el resumen de tus compras, envios realizados y estado de tus paquetes</p>
+                            </div>
+
+                            <div class="info_box box_gradient1" style="margin-bottom:15px;">
+                              <h5 class="aviso_icn">Aviso</h5>
+                              <p style="font-size:13px;">Recuerda al realizar tus compras colocar la dirección de tu locker en Cittybox: <br><br>
+                                <b>2250 NW 114th Ave.COL 5242 Miami, FL 33172.</b></p>
                             </div>
 
                             <div class="fancy_table">
                                 <div class="table_header">
-                                    <form>
-                                        <label class="inlined">Filtrar por: </label>
-                                        <select class="tiny_select">
-                                            <option>Paquetes Recibidos</option>
-                                            <option>Paquetes Prealertados</option>
-                                        </select>
-                                    </form>
+                                    {% shippings_filter %}
                                 </div>
-
-                                <table>
-                                    <tbody><tr class="main_header box_gradient1">
-                                        <td>No. Pedido</td>
-                                        <td width="200">Producto</td>
-                                        <td>Transportadora</td>
-                                        <td>Estado</td>
-                                    </tr>
-                                    {% shippings_list profile %}
-                                    
-                                    
-                                </tbody></table>
+                                {% shippings_list profile %}
+                                
 
                             </div><!-- ENDS fancy_table -->
 
-                            <div class="pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                            </div>
+                            
 
                         </div>
 
@@ -61,52 +46,9 @@
 
                             <div class="fancy_table">
                                 <div class="table_header">
-                                    <form>
-                                        <label class="inlined">Filtrar por: </label>
-                                        <select class="tiny_select">
-                                            <option>Paquetes Recibidos</option>
-                                            <option>Paquetes Prealertados</option>
-                                        </select>
-                                    </form>
+                                    
                                 </div>
-                                <table>
-                                    <tbody><tr class="main_header box_gradient1">
-                                        <td>No. Pedido</td>
-                                        <td>Producto</td>
-                                        <td>Categoria</td>
-                                        <td>Pais origen</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                    <tr class="odd">
-                                        <td><a href="">120-12014515</a></td>
-                                        <td>Kindle Fire, Full Color 7... </td>
-                                        <td>Tecnologia</td>
-                                        <td>Estados Unidos</td>
-                                        <td><a href="#">Prealertar</a></td>
-                                    </tr>
-                                </tbody></table>
-
+                                {% ofertas_favoritas request.user %}
                             </div><!-- ENDS fancy_table -->
 
                         </div>

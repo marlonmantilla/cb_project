@@ -1,28 +1,54 @@
-{% for shipping in shippings %}
 
-
+<table>
+<tbody><tr class="main_header box_gradient1">
+    <td>No. Pedido</td>
+    <td width="200">Producto</td>
+    <td>Transportadora</td>
+    <td>Estado</td>
+</tr>
+                                    
+                              
+{% for shipping in shippings.object_list %}
 <tr class="{% cycle 'odd' 'even' %}">
-                                        <td><a href="">{{ shipping.guia }}</a></td>
-                                        <td>
-                                            <div style="position: relative;">
-                                                <a class="tooltip_trigger tooltip_1" href="javascript://">{% for producto in shipping.productos.all|slice:":3" %}
-                                                {{ producto }}
-                                                {% endfor %}
-                                                </a>
-                                                <div class="tooltip tooltip_1" style="display: none;">
-                                                    <span class="tarrow"></span>
-                                                    <div class="tooltip_cont">
-                                                        <img width="95" src="img/misc/kindle.jpg">
-                                                        <a href="#"></a>
-                                                        <span class="old_price">$299.00 </span><span class="price">$199.00</span>
-                                                        <span class="store">Oferta de <a href="#">amazon</a></span>
-                                                    </div><!-- END tooltip_cont -->
-                                                </div><!-- END tooltip -->
-                                            </div>
-                                        </td>
-                                        <td>{{ shipping.transportadora }}</td>
-                                        
-                                        <td><a class="{% if shipping.estado == 1 %}check_icn{% else %}warning_icn{% endif %}" href="#"></a></td>
-                                    </tr>
-
+    <td><a href="javascript://" {% if not shipping.guia  %}title="Esta siendo tramitado por Cittybox..."{% endif %} class="tooltip_plugin">{% if shipping.guia  %}{{ shipping.guia }}{% else %}En espera{% endif %}</a></td>
+    <td>
+        <div style="position: relative;">
+            <a class="tooltip_trigger tooltip_1" {% if shipping.oferta  %}href="{% url show_offer shipping.oferta.tienda.nombre|slugify,shipping.oferta.id %}"{% endif %}>{% for producto in shipping.productos.all|slice:":3" %}
+            {{ producto }}
+            {% endfor %}
+            </a>
+            <div class="tooltip tooltip_1" style="display: none;">
+                <span class="tarrow"></span>
+                <div class="tooltip_cont">
+                    <img width="95" src="img/misc/kindle.jpg">
+                    <a href="#"></a>
+                    <span class="old_price">$299.00 </span><span class="price">$199.00</span>
+                    <span class="store">Oferta de <a href="#">amazon</a></span>
+                </div><!-- END tooltip_cont -->
+            </div><!-- END tooltip -->
+        </div>
+    </td>
+    <td><a href="javascript://" {% if not shipping.guia  %}title="Esta siendo tramitado por Cittybox..."{% endif %} class="tooltip_plugin">{% if shipping.guia  %}{{ shipping.transportadora }}{% else %}En espera{% endif %}</a></td>
+    
+    <td><a title="{% if shipping.estado == 1 %}Paquete recibido{% endif %}{% if shipping.estado == 2 %}En tu Locker{% endif %}{% if shipping.estado == 0 %}Paquete en espera{% endif %}" class="{% if shipping.estado == 1 %}check_icn{% endif %}{% if shipping.estado == 2 %}en_locker{% endif %}{% if shipping.estado == 0 %}warning_icn{% endif %} tooltip_plugin" href="javascript://"></a></td>
+</tr>
 {% endfor %}
+</tbody></table>
+
+
+
+<div class="pagination" >
+    <span class="step-links">
+        {% if shippings.has_previous %}
+        <a href="?page={{ shippings.previous_page_number }}"><</a>
+        {% endif %}
+
+        <span class="current">
+            Pagina {{ shippings.number }} de {{ shippings.paginator.num_pages }}.
+        </span>
+
+        {% if shippings.has_next %}
+            <a href="?page={{ shippings.next_page_number }}">></a>
+        {% endif %}
+    </span>
+</div>

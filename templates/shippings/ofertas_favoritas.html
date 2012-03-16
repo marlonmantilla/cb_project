@@ -1,0 +1,24 @@
+<table>
+<tbody><tr class="main_header box_gradient1">
+    <td>Oferta</td>
+    <td>Categoria</td>
+    <td>Compartir</td>
+    <td></td>
+</tr>
+
+{% for offer in offers %}
+
+<tr>
+    <td><a href="{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}">{{ offer.oferta.titulo }}</a></td>
+    <td>{{ offer.oferta.categoria }} </td>
+    <td>
+    <ul class="horz">
+    	<li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}" class='st_twitter' ></span></li>
+    	<li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}"></span></li>
+    	</ul>
+    </td>
+    <td><a href="{% url show_offer offer.oferta.tienda.nombre|slugify,offer.oferta.id %}">Comprar</a></td>
+</tr>
+{% endfor %}
+
+</tbody></table>

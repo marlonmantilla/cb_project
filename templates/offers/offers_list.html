@@ -1,3 +1,4 @@
+{% load offers_extras %}
 {% if offers.object_list %}
 <div class="pagination" style="width:100%">
     <span class="step-links">
@@ -20,17 +21,22 @@
 	<li class="box_gradient1 main">
 		<div class="top_links clearfix">
             
-			<ul class="horz tl_l"><li><a rel="{{ offer.id }}" class="add_to_favorites" onclick="favorites(this);" href="javascript://">Agregar a favoritos</a></li></ul>
-
+            {% if request.user.is_authenticated %}
+			<ul class="horz tl_l">
+                <li>
+                {% is_favorite offer %}
+                </li>
+            </ul>
+            {% endif %}
 			<div class="share_actions tl_r">
-				<ul class="horz"><li class="font11px">Compartir en</li><li><a class="facebook_share" href="#">Facebook</a></li><li><a  href="#" class="twitter_share">Twitter</a></li></ul>
+				<ul class="horz"><li class="font11px">Compartir en</li><li><span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer offer.tienda.nombre|slugify,offer.id %}" class='st_twitter' ></span></li><li><span st_title="Oferta en Cittybox"  class='st_facebook' st_url="http://cittybox.com{% url show_offer offer.tienda.nombre|slugify,offer.id %}"></span></li></ul>
 			</div>
 		</div><!-- End top_links -->
 
-		<a target="_blank" href="{{ offer.url }}"><img height="120" width="120" src="{{ MEDIA_URL }}{{ offer.imagen }}" /></a>
+		<a  href="{% url show_offer offer.tienda.nombre|slugify,offer.id %}"><img height="120" width="120" src="{{ MEDIA_URL }}{{ offer.imagen }}" /></a>
 
 		<div class="offer_info">
-			<a href="{{ offer.url }}" target="_blank">{{ offer.titulo|truncatewords:5 }} </a>
+			<a href="{% url show_offer offer.tienda.nombre|slugify,offer.id %}" >{{ offer.titulo|truncatewords:5 }} </a>
 			<span class="price">${{ offer.precio }} </span>
 		</div>
 

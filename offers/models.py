@@ -38,6 +38,7 @@ class Oferta(models.Model):
 	url = models.URLField(blank=True) 
 	categoria = models.ForeignKey(Categoria, blank=True, null=True)
 	fecha_creacion = models.DateTimeField(_("Fecha de creacion"),auto_now_add=True) 
+	activa = models.BooleanField(blank=True,default=True)
 		 
 	def __unicode__(self):
 		return self.titulo

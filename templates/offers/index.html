@@ -14,7 +14,7 @@
 							</div>
 							
 							<div class="oferta_del_dia expanded">
-								<h5><span class="offer_arrow"></span>Oferta del día</h5>
+								<h5><span class="offer_arrow"></span>Oferta del día </h5>
 
 								<div class="oferta_del_dia_cont">
 
@@ -22,7 +22,8 @@
 
 										<div class="slider_ofertas">
 											<img src="{{MEDIA_URL}}{{ main_offer.imagen }}" width="287" />
-											
+											<h4 class="stats"><span>{{ prealertados }}</span> persona{{ prealertados|pluralize }} ha{{ prealertados|pluralize:"n" }} prealertado</h4>
+											<h4 class="stats"><span>{{ favoritas }}</span> persona{{ favoritas|pluralize }} ha{{ favoritas|pluralize:"n" }} agregado a favoritas</h4>
 										</div>
 
 										<div id="slider_pager"></div>
@@ -30,13 +31,18 @@
 									</div>
 
 									<div class="oferta_right">
-										<h2><a target="_blank" href="{{ main_offer.url }}">{{ main_offer.titulo|truncatewords:5 }}</a></h2>
+										<h2><a href="{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}">{{ main_offer.titulo|truncatewords:5 }}</a></h2>
 										<span class="price">${{ main_offer.precio }}</span> 
 										{% if main_offer.precio_anterior %}
 											<span class="old_price">{{ main_offer.precio_anterior }}</span>
 										{% endif %}
 										<p>{{ main_offer.descripcion|truncatewords:40 }}</p>
-										<p><a target="_blank" href="{{ main_offer.url }}" class="btn set2">Comprar</a></p>
+										<p>
+											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_twitter_hcount' ></span>
+											<span st_title="Oferta en Cittybox" st_url="http://cittybox.com{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class='st_facebook_hcount' ></span>
+											
+										</p>
+										<p><a href="{% url show_offer main_offer.tienda.nombre|slugify,main_offer.id %}" class="btn set2">Ver oferta</a></p>
 									</div>
 
 								</div><!-- END oferta_del_dia_cont-->
@@ -82,7 +88,7 @@
 
 					
 		</div>
-
+					
 					<script type="text/javascript">
 						
 						function filtrar_categoria(elem){
