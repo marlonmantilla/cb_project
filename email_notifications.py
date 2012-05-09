@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.template import Context
 from settings import MEDIA_URL
 
-CITTYBOX_ADMINS = ['admin@cittybox.com','marlon.mantilla@hotmail.com']
+CITTYBOX_ADMINS = ['marlon.mantilla@hotmail.com']
 
 def send_status_notification(envio):
 	htmly = get_template('emails/status_change.html')
