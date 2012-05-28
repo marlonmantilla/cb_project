@@ -3,6 +3,10 @@ from django.template.context import RequestContext
 from userena.forms import AuthenticationForm
 from django.core.urlresolvers import reverse
 
+
+def how_it_works(request):
+	return render_to_response('dashboard/how_works.html',locals(), context_instance=RequestContext(request)) 
+
 def under_construction(request):
 	return render_to_response('dashboard/construccion.html',locals(), context_instance=RequestContext(request)) 
 

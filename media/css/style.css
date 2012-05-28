@@ -1491,3 +1491,177 @@ ul.horz li{
     p, h2, h3 { orphans: 3; widows: 3; }
     h2, h3{ page-break-after: avoid; }
 }
+
+/*** COMO FUNCIONA ***/
+
+div.how_slider{
+    height: 241px;
+    background: url("../img/howit/box.jpg") repeat-x;
+    margin-bottom: 30px;
+}
+div.how_slider .how_slider_cont{
+    height: 183px;
+    border-bottom: 1px solid #DFDFDF;
+    overflow: hidden;
+}
+div.how_slider .how_slider_bar{
+    border-top: 1px solid #FFF;
+    height: 57px;
+}
+
+ul.steps_list{
+    list-style: none;
+    margin: 0;
+    height: 100%;
+    padding: 0;
+    width: 2440px;
+    
+    -webkit-transition:margin 0.5s ease-in;  
+   -moz-transition:margin 0.5s ease-in;  
+   -o-transition:margin 0.5s ease-in;  
+   transition:margin 0.5s ease-in;  
+}
+ul.steps_list li{
+    float: left;
+    height: 100%;
+    background: url("../img/howit/arrow.png") no-repeat right center;
+    padding: 0 20px;
+}
+ul.steps_list li .step_img{
+    float: left;
+    width: 68px;
+    padding-top: 30px;
+}
+ul.steps_list li .step_img .steps_icns{
+
+}
+ul.steps_list li .steps_text{
+    float: left;
+    width: 160px;
+    padding-top: 53px;
+}
+ul.steps_list li .steps_text h4{
+    color: #55ACC7;
+    font-size: 17px;
+    margin: 0;
+    margin-bottom: 2px;
+    font-family: 'AvantGardeBkBT';
+}
+ul.steps_list li .steps_text p{
+
+}
+ul.steps_list li.buy .step_img{
+    width: 80px;
+}
+ul.steps_list li.buy .steps_text{
+    margin-right: 20px;
+    width: 150px;
+}
+.steps_icns{
+    background: url("../img/howit/howitworks_icns.png") no-repeat;
+    display: block;
+
+}
+.steps_icns.user{
+    width: 53px;
+    height: 84px;
+}
+.steps_icns.buy{
+    background-position: -88px 0;
+    height: 84px;
+    width: 67px;
+}
+ul.steps_list li.address{
+    padding-left: 0;
+    width: 456px;
+
+}
+ul.steps_list li.prealert{
+    width: 485px;
+}
+.steps_icns.address{
+    background-position: -179px 0;
+    height: 84px;
+    width: 63px;
+}
+.steps_icns.prealert{
+    background-position: -378px 0;
+    height: 84px;
+    width: 53px;
+}
+.steps_icns.aduana{
+    background-position: -469px 0;
+    height: 92px;
+    width: 55px;
+}
+.steps_icns.recibe{
+    background-position: -279px 0;
+    height: 92px;
+    margin-top: 19px;
+    width: 70px;
+}
+li.recibe{
+     width: 300px;
+     background: none !important; 
+}
+li.recibe .step_img{
+    margin-right: 14px;
+}
+li.recibe .steps_text{
+    width: 200px !important;
+}
+li.aduana{
+    width: 360px;
+}
+li.aduana .steps_text{
+    width: 229px !important;
+}
+li.prealert .steps_text{
+    width: 351px !important;
+}
+ul.steps_list li.address .step_img{
+    width: 80px;
+}
+ul.steps_list li.address .steps_text{
+    margin-right: 2px;
+    width: 333px;
+}
+ul.steps_list li.address .steps_text p{
+
+}
+.steps_left{
+    width: 165px;
+    float: left;
+}
+.address_box{
+    background: #FAF3DD;
+    border: 1px solid #EFC647;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    padding: 5px;
+    color: #A96C37;
+    font-size: 11px;
+}
+ul.steps_list li.address .address_box{
+    float: left;
+    margin-right: 2px;
+    margin-top: 5px;
+    width: 131px;
+}
+div.block{
+    margin-bottom: 15px;
+}
+div.cittybox_mission{
+    background: url("../img/howit/cittybox_box.jpg") no-repeat;
+    background-position: 90% 36px;
+    border-bottom: 1px solid #EBEBEB;
+    padding-bottom: 10px;
+}
+div.cittybox_mission h1{
+    
+}
+div.cittybox_mission p{
+    line-height: 22px;
+    width: 71%;
+}
