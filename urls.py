@@ -40,6 +40,8 @@ urlpatterns = patterns('',
     (r'^i18n/', include('django.conf.urls.i18n')),
     
     url(r'^como-funciona/$', 'views.how_it_works', name='how_it_works'),
+    url(r'^tarifas/$', 'views.tarifas', name='tarifas'),
+    url(r'^impuestos/$', 'views.impuestos', name='impuestos'),
 
 
 )

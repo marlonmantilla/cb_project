@@ -403,6 +403,7 @@ input.error{ border: 1px solid red !important; }
 .page_content p{
     margin: 0;
     margin-bottom: 15px;
+    line-height: 20px;
 }
 .page_content{
     color: #666;
@@ -1498,6 +1499,7 @@ div.how_slider{
     height: 241px;
     background: url("../img/howit/box.jpg") repeat-x;
     margin-bottom: 30px;
+    overflow: hidden;
 }
 div.how_slider .how_slider_cont{
     height: 183px;
@@ -1515,11 +1517,11 @@ ul.steps_list{
     height: 100%;
     padding: 0;
     width: 2440px;
-    
-    -webkit-transition:margin 0.5s ease-in;  
-   -moz-transition:margin 0.5s ease-in;  
-   -o-transition:margin 0.5s ease-in;  
-   transition:margin 0.5s ease-in;  
+
+    /*    -webkit-transition:margin 0.5s ease-in;  
+       -moz-transition:margin 0.5s ease-in;  
+       -o-transition:margin 0.5s ease-in;  
+       transition:margin 0.5s ease-in;  */
 }
 ul.steps_list li{
     float: left;
@@ -1601,8 +1603,8 @@ ul.steps_list li.prealert{
     width: 70px;
 }
 li.recibe{
-     width: 300px;
-     background: none !important; 
+    width: 300px;
+    background: none !important; 
 }
 li.recibe .step_img{
     margin-right: 14px;
@@ -1659,9 +1661,132 @@ div.cittybox_mission{
     padding-bottom: 10px;
 }
 div.cittybox_mission h1{
-    
+
 }
 div.cittybox_mission p{
     line-height: 22px;
     width: 71%;
+}
+.short_title{
+    font-size: 13px;
+}
+
+.feature_icon{
+    background: url("../img/howit/icons_home.png") no-repeat;
+    display: block;
+    margin-bottom: 26px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+.feature_icon.world{
+    height: 82px;
+    width: 85px;
+}
+.feature_icon.basket{
+    background-position: 0 -119px;
+    height: 85px;
+    width: 84px;
+}
+.feature_icon.box{
+    height: 82px;
+    background-position: 0 -240px;
+    width: 85px;
+}
+
+.como_calcular{
+    overflow: hidden;
+}
+.como_calcular .box_sizes{
+    float: left;
+    background: url("../img/howit/calculo.jpg") no-repeat;
+    width: 207px;
+    height: 164px;
+}
+.como_calcular .box_text{
+    color: #C1A285;
+    float: left;
+    font-size: 12px;
+    line-height: 27px;
+    margin-left: 24px;
+    padding-top: 34px;
+}
+
+.address_box.big{
+    font-size: 15px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    width: 338px;
+}
+.address_box.big .step_img{
+    float: left;
+    margin-right: 18px;
+    margin-top: -28px;
+}
+.address_box.big .text{
+    float: left;
+    line-height: 22px;
+}
+
+.lista{
+    overflow: hidden;
+    padding: 15px 0;
+}
+.lista li{
+    float: left;
+    line-height: 54px;
+    overflow: hidden;
+    width: 460px;
+    margin-bottom: 18px;
+}
+.lista li .imagen{
+    background: url("../img/howit/impuestos_icons.png") no-repeat;
+    width: 64px;
+    height: 64px;
+    margin-right: 13px;
+    float: left;
+}
+.lista li .imagen.pc{
+    
+}
+.lista li .imagen.libros{
+    background-position: 0 -167px;
+}
+.lista li .imagen.paquetes{
+    background-position: 0 -85px;
+}
+.lista li .imagen.documentos{
+    background-position: 0 -247px;
+}
+.lista li .texto{
+    float: left;
+    font-size: 15px;
+}
+.shadow_separator{
+    border-bottom: 1px solid #DADADA;
+    box-shadow: 0 4px 2px -1px #E7E7E7;
+}
+.beneficios p{
+    background: url("../img/howit/blue_star.png") 3px center no-repeat #EBFBFF;
+    padding: 20px 20px 20px 69px;
+    color: #309CBA;
+    border: 1px solid #D1F1F9;
+    box-shadow: 0 0 2px 0 #E2EBEE inset;
+    -moz-box-shadow: 0 0 2px 0 #E2EBEE inset;
+    -webkit-box-shadow: 0 0 2px 0 #E2EBEE inset;
+    border-radius: 11px 11px 11px 11px;
+    -moz-border-radius: 11px 11px 11px 11px;
+    -webkit-border-radius: 11px 11px 11px 11px;
+
+    -webkit-transition:all 0.5s ease-in;  
+   -moz-transition:all 0.5s ease-in;  
+   -o-transition:all 0.5s ease-in;  
+   transition:all 0.5s ease-in;  
+}
+.beneficios p:hover{
+   
 }

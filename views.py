@@ -7,6 +7,12 @@ from django.core.urlresolvers import reverse
 def how_it_works(request):
 	return render_to_response('dashboard/how_works.html',locals(), context_instance=RequestContext(request)) 
 
+def impuestos(request):
+	return render_to_response('dashboard/impuestos.html',locals(), context_instance=RequestContext(request)) 
+
+def tarifas(request):
+	return render_to_response('dashboard/tarifas.html',locals(), context_instance=RequestContext(request)) 	
+
 def under_construction(request):
 	return render_to_response('dashboard/construccion.html',locals(), context_instance=RequestContext(request)) 
 
