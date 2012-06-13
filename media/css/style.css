@@ -1039,9 +1039,18 @@ form .info_box{
 .features_set1 li{
     float: left;
     list-style: none outside none;
-    margin-right: 53px;
+    margin-right: 0;
     text-align: center;
-    width: 171px
+    border-right: 1px solid #DDDDDD;
+    width: 155px;
+    box-shadow: 3px 0 2px 0 #EDEDED;
+    -moz-box-shadow: 3px 0 2px 0 #EDEDED;
+    -webkit-box-shadow: 3px 0 2px 0 #EDEDED;
+    padding: 0 27px;
+}
+.features_set1 li:last-child{
+    border: none;
+    box-shadow: none;
 }
 .features_set1 li:last-child{
     margin-right: 0;
@@ -1050,7 +1059,8 @@ form .info_box{
     font-family: 'AvantGardeBkBT';
     font-size: 19px;
     font-weight: bold;
-    height: 51px;
+    height: 41px;
+    margin-bottom: 21px;
 }
 .features_set1 li p{
     color: #666666;
@@ -1060,6 +1070,7 @@ form .info_box{
     display: block;
     height: 124px;
 }
+
 
 .box_set1{
     border: 1px solid #EBEBEB;
