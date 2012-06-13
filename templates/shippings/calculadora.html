@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %} Calcula tus envios - Cittybox {% endblock %}
+
+{% block content %}
+
+<div class="page_content clearfix">
+    <div class="block shadow_separator">
+      <h1>Calcula tus envios</h1>     
+      <p>Aqu&iacute; podr&aacute;s calcular el valor aproximado de tus envios:</p>      
+    </div>
+
+    <div class="calculadora clearfix">
+
+        <form>
+            <p class="inlined wset2">
+                <label>Origen del despacho</label>
+                <select class="text" style="width:250px">
+                    <option>ESTADOS UNIDOS - MIAMI </option>
+                </select>
+            </p>
+            <p class="inlined wset2">
+                <label>Valor en US*</label>
+                <input type="text" id="valor" class="text" />
+            </p>
+            <p class="inlined wset2">
+                <label>Tipo de articulo</label>
+                <select class="text" id="tipo">
+                    <option value="0.26">Paquetes</option>
+                    <option value="0">Documentos</option>
+                    <option value="0">Computadores</option>
+                    <option value="0">Libros</option>
+                </select>
+            </p>
+            <p class="inlined wset2">
+                <label>Peso en LB*</label>
+                <input type="text" id="peso" class="text" />
+            </p>
+            <input type="button" value="Calcular" id="calcular" class="btn set2">
+        </form>
+
+        <div class="info_box box_gradient1">
+          <h5 class="aviso_icn">Costo de su envio</h5>
+          <div><b>Valor envio por peso: </b> <span id="valor_envio">0</span> US</div>
+          <div><b>Cargo por seguro: </b> <span id="cargo_seguro">5 US</span></div>
+          <div class="tarifa"><b>Tarifa aproximada: </b> $<span id="total"></span> US</div>
+        </div>
+                
+    </div><!-- end calculadora -->
+
+      
+        
+    
+
+</div>
+    
+
+{% endblock %}
+
+{% block javascript_extra %}
+
+var valor_libra = 2.5;
+var seguro = 5;
+
+$("#calcular").click(function(){
+    peso = parseInt($("#peso").val());
+    valor = parseInt($("#valor").val());
+    impuesto = parseFloat($("#tipo").val());
+   
+    envio_peso = valor_libra * peso;
+    total = (envio_peso) + (valor * impuesto) + seguro;
+    
+    $("#valor_envio").html(envio_peso);
+    $("#total").html(total);
+});
+
+
+{% endblock %}

@@ -1831,3 +1831,35 @@ div.cittybox_mission p{
 .beneficios p:hover{
    
 }
+
+.calculadora{
+    width: 547px;
+    margin-bottom: 130px;
+    position: relative;
+}
+
+.calculadora form .wset2 {
+    width: 261px;
+}
+.calculadora .text{
+    padding: 5px;
+}
+.calculadora select{
+    font-size: 12px;
+    padding: 4px;
+    width: 250px;
+}
+
+.calculadora .info_box{ 
+    position: absolute;
+    right: -406px;
+    top: 0;
+    width: 384px;
+}
+.calculadora .info_box .tarifa{
+    background: none repeat scroll 0 0 #FFFFFF;
+    font-size: 18px;
+    line-height: 38px;
+    margin-top: 21px;
+    text-align: center;
+}

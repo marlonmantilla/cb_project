@@ -50,6 +50,11 @@ def envios_list(request):
 	
 	return render_to_response('shippings/envios_list.html', {'shippings':envios}, context_instance=RequestContext(request))
 
+def calculadora(request):
+	
+	
+	return render_to_response('shippings/calculadora.html', locals(), context_instance=RequestContext(request))	
+
 def prealertar(request):
 
 	if request.method == 'POST':
