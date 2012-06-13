@@ -5,6 +5,7 @@
         <h1>Prealertar Paquete</h1>
         <p>Llena el formulario y de esta forma podremos saber la información de tu compra y paquete</p>
     </div>
+    {% if has_profile %}
     <form method='POST' id="prealertar_form" action='{% url prealertar %}'>{% csrf_token %}
         {{ form.errors }}
         <p class="inlined wset1">
@@ -44,13 +45,20 @@
        
         <input class="btn set2" type="submit" value="Prealertar" />
     </form>
-
+    {% else %}
+    <div class="info_box box_gradient1 cleared" style="width:650px">
+          <h5 class="aviso_icn">Llena todos tus datos personales!</h5>
+          <p style="font-size:12px">Para prealertar productos debemos conocer tus datos personales. Ingresa a <b><a href="{% url userena_profile_edit user.username %}">Configuraci&oacute;n de mi cuenta</a></b> y llena los datos de envio. Si tienes dudas no dudes en contactarnos.</p>
+    </div>
+    {% endif %}
 </div>
+{% if has_profile %}
 <div class="info_box box_gradient1 cleared" style="width:650px">
           <h5 class="aviso_icn">Ayuda</h5>
           <p style="font-size:12px">Prealerta cada vez que realices una compra por Internet y hayas solicitado que sea enviada a tu locker Cittybox. 
-          Esto permitirá mayor agilidad en el control y seguimiento de tus envíos. No olvides ingresar número de guía de la empresa transportadora.. Deseas saber como comprar en Cittybox? entra <a href="">aqu&iacute;</a>. </p>
+          Esto permitirá mayor agilidad en el control y seguimiento de tus envíos. No olvides ingresar número de guía de la empresa transportadora.. Deseas saber como comprar en Cittybox? entra <a href="{% url how_it_works %}">aqu&iacute;</a>. </p>
     </div>
+{% endif %}
 <script>
     
     $('.tooltip_plugin').tipsy({gravity: 's',trigger: 'focus'});

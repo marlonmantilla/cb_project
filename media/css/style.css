@@ -1133,7 +1133,8 @@ ul.list_set1 li a:hover{
 }
 .slider .slideshow {
     list-style: none;
-    height: 318px !important
+    height: 318px !important;
+    margin-top: 28px;
 }
 #slider_pager{
     position: absolute;
@@ -1164,8 +1165,36 @@ ul.list_set1 li a:hover{
 .slider .slideshow .slideshow_text .text p{
     width: 347px;
 }
+.slider .slideshow .slideshow_text .text p.big{
+    width: 437px;
+}
 .slider .img1{
-    background: url("../img/misc/img1.jpg") no-repeat scroll right 7px transparent;
+    background: url("../img/misc/slider/slide1.jpg") no-repeat scroll right 7px transparent;
+    height: 310px;
+    width: 744px;
+}
+.slider .img2{
+    background: url("../img/misc/slider/slide2.jpg") no-repeat scroll right 7px transparent;
+    height: 310px;
+    width: 744px;
+}
+.slider .img3{
+    background: url("../img/misc/slider/slide3.jpg") no-repeat scroll right 7px transparent;
+    height: 310px;
+    width: 744px;
+}
+.slider .img4{
+    background: url("../img/misc/slider/slide4.jpg") no-repeat scroll right 7px transparent;
+    height: 310px;
+    width: 744px;
+}
+.slider .img5{
+    background: url("../img/misc/slider/slide5.jpg") no-repeat scroll 313px -9px transparent;
+    height: 310px;
+    width: 744px;
+}
+.slider .img6{
+    background: url("../img/misc/slider/slide7.jpg") no-repeat scroll right 7px transparent;
     height: 310px;
     width: 744px;
 }

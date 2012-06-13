@@ -49,22 +49,7 @@
       </ul>
       {% endif %}
 
-      <div id="lang_form">
-        <form action="/i18n/setlang/" method="post" id="locale_switcher">
-          {% csrf_token %}
-          <input name="next" type="hidden" value="{{ request.path }}" />
-          <label>{% trans 'Choose language' %}:</label>
-          <select name="language" onchange="$('#locale_switcher').submit()">
-            {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}" {% if request.LANGUAGE_CODE == lang.0 %}selected{% endif %}>{{ lang.1 }}</option>
-            {% endfor %}
-          </select>
-          <noscript>
-            <input type="submit" value="{% trans "Change language" %}" />
-          </noscript>
-        </form>
-      </div>
-    </div> -->
+      -->
     
         <header>
                 <div class="logo"><a href="{% url home %}">Cittybox</a></div>
@@ -213,7 +198,7 @@
                 
                 $('.slideshow').cycle({
                     fx: 'scrollLeft', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
-                    timeout: 5000,
+                    timeout: 8000,
                     pager:  '#slider_pager'
                 });
                 $("#signup_form").validate({

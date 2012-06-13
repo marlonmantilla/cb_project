@@ -3,6 +3,40 @@
 {% load offers_extras %}
 {% load i18n %}
 
+{% block extra_scripts %}
+    <script src="{{ MEDIA_URL }}js/ui/jquery.ui.core.js"></script>
+    <script src="{{ MEDIA_URL }}js/ui/jquery.ui.widget.js"></script>
+    <script src="{{ MEDIA_URL }}js/ui/jquery.ui.mouse.js"></script>
+    <script src="{{ MEDIA_URL }}js/ui/jquery.ui.slider.js"></script>
+{% endblock %}
+
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/themes/base/jquery.ui.all.css">
+{% endblock %}
+
+{% block javascript_extra %}
+    
+    
+    
+
+    scrollPane = $( ".how_slider_cont" ),scrollContent = $( ".steps_list" );
+    
+    //build slider
+    scrollbar = $( "#slider" ).slider({
+        slide: function( event, ui ) {
+            if ( scrollContent.width() > scrollPane.width() ) {
+                scrollContent.css( "margin-left", Math.round(
+                ui.value / 100 * ( scrollPane.width() - scrollContent.width() )
+            ) + "px" );
+            } else {
+                scrollContent.css( "margin-left", 0 );
+            }
+        },
+        animate: true
+    });
+    timer = setTimeout("set_scroll()", 4000);
+{% endblock %}
+
 {% block content %}
 
 <div class="page_content clearfix">
@@ -54,7 +88,7 @@
 		<div class="box">
 			<h1 class="video_icn">Qué es Cittybox?</h1>
 
-			<div class="video_layout">
+			<!-- <div class="video_layout">
 				<div class="vl_left">
 					<img src="img/misc/video.jpg">
 				</div>
@@ -76,7 +110,107 @@
 					</ul>
 
 				</div>
-			</div>
+			</div> -->
+
+			<div class="how_slider">
+
+                        <div class="how_slider_cont">
+
+                            <ul class="steps_list"  >
+                                <li>
+                                    <div class="step_img">
+                                        <span class="steps_icns user"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <h4>Crea tu cuenta</h4>
+                                        <p>
+                                            Crea GRATIS tu cuenta Cittybox personal o empresarial.
+                                        </p>
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                                <li class="buy">
+                                    <div class="step_img">
+                                        <span class="steps_icns buy"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <h4>Compra</h4>
+                                        <p>
+                                            Compra en tu tienda
+                                            online favorita.
+                                        </p>
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                                <li class="address">
+                                    <div class="step_img">
+                                        <span class="steps_icns address"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <div class="steps_left">
+                                            <h4>Dirección CittyBox</h4>
+                                            <p>
+                                                Utiliza tu dirección Cittybox como dirección de envío o Shopping Address de la siguiente manera
+                                            </p>
+                                        </div>
+                                        <div class="address_box">
+                                            Tu Nombre / CittyBox
+                                            8810 NW 24TH TER
+                                            DORAL, FLORIDA 33172-2418
+                                            United States
+                                            Phone: 9546626021
+
+                                        </div><!-- end address_box -->
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                                <li class="prealert">
+                                    <div class="step_img">
+                                        <span class="steps_icns prealert"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <h4>Prealerta tus envios</h4>
+                                        <p>
+                                            Notifícanos que tu paquete llegará a nuestras instalaciones. Tiempo después de hacer la compra, la tienda te enviará los números de guía, envíanoslos junto con la factura y de esta manera nos encargaremos de tus envíos desde que son 
+                                            enviados de la bodega del proveedor hasta nuestra bodega.
+                                        </p>
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                                <li class="aduana">
+                                    <div class="step_img">
+                                        <span class="steps_icns aduana"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <h4>Aduana y Nacionalización</h4>
+                                        <p>
+                                            Nosotros nos encargamos de realizar todos los trámites requeridos por la Aduana en Colombia.
+                                        </p>
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                                <li class="recibe">
+                                    <div class="step_img">
+                                        <span class="steps_icns recibe"></span>
+                                    </div>
+                                    <div class="steps_text">
+                                        <h4>¡Recibe!</h4>
+                                        <p>
+                                            Recibe tus compras en la comodidad de tu casa u oficina y paga contra entrega. 
+                                        </p>
+                                    </div><!-- end steps_text -->
+                                </li>
+
+                            </ul><!-- end steps_list -->
+
+
+                        </div><!-- end how_slider_cont -->
+
+                        <div class="how_slider_bar">
+                            <div id="slider"></div>
+                        </div><!-- end how_slider_bar -->
+
+                    </div><!-- how_slider --> 
 
 		</div>
 

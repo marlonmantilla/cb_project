@@ -71,5 +71,5 @@ def prealertar(request):
 	else:
 		form = PrealertForm()
 		
-	
-	return render_to_response('shippings/prealertar.html',{'form': form,}, context_instance=RequestContext(request)) 
+	has_profile = request.user.get_profile().dircasa
+	return render_to_response('shippings/prealertar.html',{'form': form,'has_profile': has_profile}, context_instance=RequestContext(request)) 
