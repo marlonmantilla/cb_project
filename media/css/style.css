@@ -319,6 +319,7 @@ header nav.top_nav{
     position: absolute;
     right: 0;
     top: 8px;
+    z-index: 55;
 }
 header nav.top_nav ul{
 
