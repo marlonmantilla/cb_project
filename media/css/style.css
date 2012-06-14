@@ -1594,6 +1594,8 @@ ul.steps_list li .steps_text p{
 
 }
 ul.steps_list li.buy .step_img{
+    margin-right: 8px;
+    padding-top: 45px;
     width: 80px;
 }
 ul.steps_list li.buy .steps_text{
@@ -1601,18 +1603,20 @@ ul.steps_list li.buy .steps_text{
     width: 150px;
 }
 .steps_icns{
-    background: url("../img/howit/howitworks_icns.png") no-repeat;
+    /*background: url("../img/howit/howitworks_icns.png") no-repeat;*/
     display: block;
-
+    background: url("../img/icn/icons_blu.png") no-repeat;
+    
 }
 .steps_icns.user{
+    background: url("../img/howit/howitworks_icns.png") no-repeat;
     width: 53px;
     height: 84px;
 }
 .steps_icns.buy{
-    background-position: -88px 0;
-    height: 84px;
-    width: 67px;
+    background-position: -768px 0;
+    height: 68px;
+    width: 80px;
 }
 ul.steps_list li.address{
     padding-left: 0;
@@ -1623,25 +1627,33 @@ ul.steps_list li.prealert{
     width: 485px;
 }
 .steps_icns.address{
-    background-position: -179px 0;
-    height: 84px;
-    width: 63px;
+    background-position: -654px 0;
+    height: 71px;
+    width: 64px;
 }
 .steps_icns.prealert{
-    background-position: -378px 0;
-    height: 84px;
-    width: 53px;
+    background-position: -1156px 0;
+    height: 75px;
+    width: 77px;
+}
+ul.steps_list li.prealert .step_img{
+    margin-right: 16px;
+    padding-top: 51px;
 }
 .steps_icns.aduana{
-    background-position: -469px 0;
-    height: 92px;
-    width: 55px;
+    background-position: -523px 0;
+    height: 73px;
+    width: 71px;
 }
 .steps_icns.recibe{
-    background-position: -279px 0;
+    background-position: -273px 0;
     height: 92px;
     margin-top: 19px;
     width: 70px;
+}
+ul.steps_list li.aduana .step_img{
+    margin-right: 19px;
+    padding-top: 49px;
 }
 li.recibe{
     width: 300px;
@@ -1663,6 +1675,8 @@ li.prealert .steps_text{
     width: 351px !important;
 }
 ul.steps_list li.address .step_img{
+    margin-left: 24px;
+    padding-top: 48px;
     width: 80px;
 }
 ul.steps_list li.address .steps_text{

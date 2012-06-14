@@ -42,6 +42,7 @@
         <div class="info_box box_gradient1">
           <h5 class="aviso_icn">Costo de su envio</h5>
           <div><b>Valor envio por peso: </b> <span id="valor_envio">0</span> US</div>
+          <div><b>Impuesto: </b> <span id="valor_impuesto">0</span> US</div>
           <div><b>Cargo por seguro: </b> <span id="cargo_seguro">5 US</span></div>
           <div class="tarifa"><b>Tarifa aproximada: </b> $<span id="total"></span> US</div>
         </div>
@@ -61,15 +62,24 @@
 
 var valor_libra = 2.5;
 var seguro = 5;
+var libras_minimas = 10;
 
 $("#calcular").click(function(){
     peso = parseInt($("#peso").val());
     valor = parseInt($("#valor").val());
     impuesto = parseFloat($("#tipo").val());
-   
-    envio_peso = valor_libra * peso;
-    total = (envio_peso) + (valor * impuesto) + seguro;
     
+    if( peso > libras_minimas ){
+        envio_peso = valor_libra * peso;
+    }else{
+        envio_peso = 25;
+    }
+
+
+    valor_impuesto = valor * impuesto;
+    total = (envio_peso) + (valor_impuesto) + seguro;
+    
+    $("#valor_impuesto").html(valor_impuesto);
     $("#valor_envio").html(envio_peso);
     $("#total").html(total);
 });
